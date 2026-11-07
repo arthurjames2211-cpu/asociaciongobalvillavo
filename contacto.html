@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto · Asociación Global Villavo</title>
+<meta name="description" content="Escríbenos por WhatsApp o por el formulario: solicitudes, quejas y sugerencias.">
+<meta name="theme-color" content="#0c3b1e">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Contacto · Asociación Global Villavo">
+<meta property="og:description" content="Escríbenos por WhatsApp o por el formulario: solicitudes, quejas y sugerencias.">
+<meta property="og:image" content="img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>try{var d=document.documentElement,t=localStorage.getItem('tam');if(t)d.dataset.tam=t;if(localStorage.getItem('contraste')==='1')d.classList.add('alto-contraste');}catch(e){}document.documentElement.classList.add('con-js');</script>
+</head>
+<body data-page="contacto">
+<main id="contenido">
+<section class="portada-pagina">
+  <div class="contenedor">
+    <p class="migas"><a href="index.html">Inicio</a> / Contacto</p>
+    <h1>Contacto</h1>
+    <p>Escríbenos para pedir una recolección, resolver una duda o contarnos una sugerencia.</p>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,42 C200,96 420,4 700,40 C960,74 1180,104 1440,48 L1440,90 L0,90 Z"/></svg>
+</section>
+<section class="seccion">
+  <div class="contenedor contacto-grid">
+    <div class="tarjeta tarjeta--plana reveal">
+      <h2>Escríbenos</h2>
+      <div id="f-aviso" class="aviso-form" hidden></div>
+      <form class="form" id="formulario" name="contacto" method="POST" action="/contacto?enviado=1" data-netlify="true" netlify-honeypot="campo-trampa" novalidate>
+        <input type="hidden" name="form-name" value="contacto">
+        <input type="hidden" name="subject" value="Nuevo mensaje desde el sitio web (%{formName})">
+        <p class="trampa" aria-hidden="true"><label>No llenes este campo: <input name="campo-trampa" tabindex="-1" autocomplete="off"></label></p>
+        <div class="form__fila">
+          <div><label for="f-nombre">Nombre</label><input class="campo" id="f-nombre" name="nombre" type="text" autocomplete="name" required></div>
+          <div><label for="f-telefono">Teléfono</label><input class="campo" id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="form__fila">
+          <div><label for="f-correo">Correo <span style="font-weight:400">(opcional)</span></label><input class="campo" id="f-correo" name="correo" type="email" inputmode="email" autocomplete="email" spellcheck="false"></div>
+          <div><label for="f-barrio">Barrio <span style="font-weight:400">(opcional)</span></label><input class="campo" id="f-barrio" name="barrio" type="text" list="lista-barrios" autocomplete="off"><datalist id="lista-barrios"></datalist></div>
+        </div>
+        <div><label for="f-asunto">Asunto</label>
+          <select class="campo" id="f-asunto" name="asunto" required>
+            <option value="">Elige una opción</option>
+            <option value="solicitud">Solicitud (pedir una recolección o información)</option>
+            <option value="queja">Queja</option>
+            <option value="sugerencia">Sugerencia</option>
+          </select></div>
+        <div><label for="f-mensaje">Mensaje</label><textarea class="campo" id="f-mensaje" name="mensaje" required></textarea></div>
+        <div>
+          <label class="form__consent" style="font-weight:400;font-family:var(--f-texto)"><input type="checkbox" name="consentimiento" value="si" required><span id="consent-texto"></span></label>
+          <div id="consent-pend"></div>
+        </div>
+        <button class="btn btn--grande" type="submit"><span>Enviar mensaje</span></button>
+      </form>
+    </div>
+    <aside>
+      <div class="tarjeta tarjeta--plana reveal">
+        <h2>Datos de contacto</h2>
+        <ul class="datos-contacto" id="c-datos"></ul>
+      </div>
+      <div class="reveal" id="c-redes" style="margin-top:1.4rem"></div>
+    </aside>
+  </div>
+</section>
+<section class="seccion seccion--verde">
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Cómo llegar</span><h2>Encuéntranos</h2></div>
+    <div id="c-mapa"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/icons.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

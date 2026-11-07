@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asociación Global Villavo · Reciclaje en tu ciudad</title>
+<meta name="description" content="Consulta tu ruta, aprende a separar tus residuos y pide una recolección de material reciclable.">
+<meta name="theme-color" content="#0c3b1e">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Asociación Global Villavo · Reciclaje en tu ciudad">
+<meta property="og:description" content="Consulta tu ruta, aprende a separar tus residuos y pide una recolección de material reciclable.">
+<meta property="og:image" content="img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>try{var d=document.documentElement,t=localStorage.getItem('tam');if(t)d.dataset.tam=t;if(localStorage.getItem('contraste')==='1')d.classList.add('alto-contraste');}catch(e){}document.documentElement.classList.add('con-js');</script>
+</head>
+<body data-page="inicio">
+<main id="contenido">
+
+<section class="heroe">
+  <div class="contenedor heroe__grid">
+    <div>
+      <span class="etiqueta" style="background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3)" data-bind="empresa.ciudad">Reciclaje en tu ciudad</span>
+      <h1 data-bind="inicio.titular">Recicla fácil y cuida tu ciudad</h1>
+      <p data-bind="inicio.subtitulo">Consulta cuándo pasa la ruta por tu barrio, aprende a separar tus residuos y pide una recolección.</p>
+      <div class="heroe__acciones">
+        <a class="btn btn--claro btn--grande" href="rutas-y-horarios.html"><span data-icon="map-pin"></span> Consulta tu ruta</a>
+        <a class="btn btn--borde-claro btn--grande" href="contacto.html?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span> Pide una recolección</a>
+      </div>
+    </div>
+    <div class="heroe__arte" aria-hidden="true">
+      <div class="heroe__aro"></div>
+      <div class="heroe__logo"><img src="img/logo.webp" width="340" height="340" alt=""></div>
+      <svg class="hoja-flota hoja-flota--a" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4C9 4 4 9 4 16c0 1.5.3 2.8.8 4C6 14 10 11 15 10c-4 2-7 5-8.5 10 1.2.7 2.8 1 4.5 1 7 0 10-5 9-17z"/></svg>
+      <svg class="hoja-flota hoja-flota--b" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4C9 4 4 9 4 16c0 1.5.3 2.8.8 4C6 14 10 11 15 10c-4 2-7 5-8.5 10 1.2.7 2.8 1 4.5 1 7 0 10-5 9-17z"/></svg>
+    </div>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,42 C200,96 420,4 700,40 C960,74 1180,104 1440,48 L1440,90 L0,90 Z"/></svg>
+</section>
+
+<div class="tramites-wrap contenedor">
+  <div class="tramites reveal">
+    <h2>¿Qué necesitas hacer hoy?</h2>
+    <div class="tramites__botones">
+      <a class="tramite tramite--principal" href="contacto.html?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span>Pedir recolección<small>Cuéntanos tu barrio y el material</small></a>
+      <a class="tramite" href="rutas-y-horarios.html"><span data-icon="map-pin"></span>Rutas y horarios<small>Días y hora de tu zona</small></a>
+      <a class="tramite" href="como-reciclar.html"><span data-icon="recycle"></span>Cómo reciclar<small>Qué va en cada bolsa</small></a>
+      <a class="tramite" href="contacto.html"><span data-icon="message-circle"></span>Contacto<small>Escríbenos o llámanos</small></a>
+    </div>
+    <form class="buscador" id="form-buscar" role="search" novalidate>
+      <label for="buscar-zona">Busca tu barrio o zona</label>
+      <div class="buscador__fila">
+        <input class="campo" id="buscar-zona" type="search" list="lista-zonas" placeholder="Escribe el nombre de tu barrio" autocomplete="off" enterkeyhint="search">
+        <button class="btn" type="submit"><span data-icon="search"></span> Buscar mi ruta</button>
+      </div>
+      <datalist id="lista-zonas"></datalist>
+      <div class="buscador__res" id="buscar-res" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<section class="seccion" id="proceso">
+  <div class="contenedor">
+    <div class="seccion__cab seccion__cab--centro reveal">
+      <span class="etiqueta">El camino del reciclaje</span>
+      <h2>De tu casa a la industria, en cuatro pasos</h2>
+      <p class="lead">Así viaja lo que separas: nada se pierde y todo vuelve a ser útil.</p>
+    </div>
+    <div class="escena reveal">
+<svg viewBox="0 0 900 330" role="img" aria-labelledby="escena-t escena-d" focusable="false">
+  <title id="escena-t">El recorrido del material reciclable</title>
+  <desc id="escena-d">Un camión recoge el material en una casa, lo lleva a la bodega y de ahí sigue hacia la industria, que lo convierte en nuevos productos.</desc>
+  <defs>
+    <marker id="punta" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#17692f"/></marker>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff1fb"/><stop offset="1" stop-color="#f1faec"/></linearGradient>
+  </defs>
+  <rect width="900" height="330" fill="url(#cielo)"/>
+  <circle cx="842" cy="52" r="26" fill="#ffe9a8"/>
+  <path d="M0 214 C90 170 170 196 260 176 C370 152 450 205 560 182 C670 160 760 200 900 170 L900 240 L0 240 Z" fill="#cfe9c6"/>
+  <rect y="236" width="900" height="94" fill="#a9d99d"/>
+  <rect y="248" width="900" height="36" fill="#3f4f45"/>
+  <rect y="246" width="900" height="3" fill="#2c3a32"/>
+  <line class="via-linea" x1="0" y1="266" x2="900" y2="266" stroke="#fff" stroke-width="3"/>
+
+  <!-- vuelta del ciclo -->
+  <path class="vuelta" d="M790 92 C700 -34 200 -34 104 112" fill="none" stroke="#17692f" stroke-width="3" stroke-linecap="round" marker-end="url(#punta)"/>
+  <text x="447" y="66" text-anchor="middle" font-size="15">Y vuelve a tu casa convertido en nuevos productos</text>
+
+  <!-- 1. casa -->
+  <g>
+    <rect x="52" y="178" width="96" height="58" fill="#fff" stroke="#17692f" stroke-width="3"/>
+    <polygon points="40,180 100,132 160,180" fill="#b97a42" stroke="#8a5629" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="86" y="200" width="26" height="36" rx="3" fill="#17692f"/>
+    <rect x="60" y="192" width="18" height="18" rx="2" fill="#cfe9c6" stroke="#17692f" stroke-width="2"/>
+    <rect x="120" y="192" width="18" height="18" rx="2" fill="#cfe9c6" stroke="#17692f" stroke-width="2"/>
+  </g>
+  <g class="bolsa">
+    <path d="M166 236 h28 l3 -30 h-34 z" fill="#4db848" stroke="#17692f" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M170 206 q10 -12 20 0" fill="none" stroke="#17692f" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M174 222 l6 -8 l6 8 z" fill="#fff" opacity=".9"/>
+  </g>
+
+  <!-- 3. bodega -->
+  <g>
+    <rect x="492" y="176" width="136" height="60" fill="#e1effa" stroke="#2b7fc4" stroke-width="3"/>
+    <path d="M484 178 Q560 120 636 178 Z" fill="#2b7fc4" stroke="#1d5e95" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="530" y="190" width="60" height="46" rx="2" fill="#2b7fc4"/>
+    <g stroke="#e1effa" stroke-width="2"><line x1="530" y1="202" x2="590" y2="202"/><line x1="530" y1="214" x2="590" y2="214"/><line x1="530" y1="226" x2="590" y2="226"/></g>
+  </g>
+  <g>
+    <rect class="fardo" x="640" y="214" width="26" height="22" rx="2" fill="#b97a42" stroke="#8a5629" stroke-width="2"/>
+    <rect class="fardo" x="668" y="214" width="26" height="22" rx="2" fill="#4db848" stroke="#17692f" stroke-width="2" style="animation-delay:.2s"/>
+    <rect class="fardo" x="654" y="192" width="26" height="22" rx="2" fill="#7fb7e6" stroke="#2b7fc4" stroke-width="2" style="animation-delay:.4s"/>
+  </g>
+
+  <!-- 4. industria -->
+  <g>
+    <rect x="738" y="168" width="112" height="68" fill="#fff" stroke="#17692f" stroke-width="3"/>
+    <path d="M738 168 l28 -20 v20 l28 -20 v20 l28 -20 v20 l28 -20 v20" fill="#cfe9c6" stroke="#17692f" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="752" y="106" width="16" height="48" fill="#6b7d72" stroke="#44544a" stroke-width="2"/>
+    <rect x="800" y="116" width="16" height="38" fill="#6b7d72" stroke="#44544a" stroke-width="2"/>
+    <g fill="#e1effa" stroke="#17692f" stroke-width="2"><rect x="752" y="184" width="18" height="14"/><rect x="778" y="184" width="18" height="14"/><rect x="804" y="184" width="18" height="14"/><rect x="826" y="206" width="14" height="30" fill="#17692f"/></g>
+    <circle class="humo" cx="760" cy="100" r="9" fill="#ffffff" stroke="#c4d2c9" stroke-width="1.5"/>
+    <circle class="humo" cx="760" cy="100" r="9" fill="#ffffff" stroke="#c4d2c9" stroke-width="1.5"/>
+    <circle class="humo" cx="760" cy="100" r="9" fill="#ffffff" stroke="#c4d2c9" stroke-width="1.5"/>
+  </g>
+
+  <!-- 2. camión -->
+  <g transform="translate(205 196)">
+    <g class="camion">
+      <rect x="0" y="0" width="68" height="46" rx="4" fill="#4db848" stroke="#17692f" stroke-width="3"/>
+      <path d="M68 12 h22 l14 16 v18 h-36 z" fill="#17692f" stroke="#0c3b1e" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M76 18 h11 l8 10 h-19 z" fill="#e1effa"/>
+      <path d="M26 30 l7 -11 l7 11 z" fill="#fff"/>
+      <rect x="0" y="46" width="104" height="5" fill="#0c3b1e"/>
+      <g class="rueda"><circle cx="22" cy="54" r="9" fill="#26332b"/><circle cx="22" cy="54" r="3.5" fill="#cfe9c6"/></g>
+      <g class="rueda"><circle cx="84" cy="54" r="9" fill="#26332b"/><circle cx="84" cy="54" r="3.5" fill="#cfe9c6"/></g>
+    </g>
+  </g>
+
+  <!-- etiquetas -->
+  <g font-size="14">
+    <g><rect x="22" y="294" width="156" height="30" rx="15" fill="#0c3b1e"/><circle cx="40" cy="309" r="10" fill="#4db848"/><text x="40" y="314" text-anchor="middle" font-size="12" class="t-oscuro">1</text><text x="58" y="314" class="t-claro">Tu casa</text></g>
+    <g><rect x="252" y="294" width="156" height="30" rx="15" fill="#0c3b1e"/><circle cx="270" cy="309" r="10" fill="#4db848"/><text x="270" y="314" text-anchor="middle" font-size="12" class="t-oscuro">2</text><text x="288" y="314" class="t-claro">Recolección</text></g>
+    <g><rect x="482" y="294" width="156" height="30" rx="15" fill="#0c3b1e"/><circle cx="500" cy="309" r="10" fill="#4db848"/><text x="500" y="314" text-anchor="middle" font-size="12" class="t-oscuro">3</text><text x="518" y="314" class="t-claro">Bodega</text></g>
+    <g><rect x="712" y="294" width="156" height="30" rx="15" fill="#0c3b1e"/><circle cx="730" cy="309" r="10" fill="#4db848"/><text x="730" y="314" text-anchor="middle" font-size="12" class="t-oscuro">4</text><text x="748" y="314" class="t-claro">Industria</text></g>
+  </g>
+</svg>
+</div>
+<ol class="pasos">
+  <li class="reveal"><h3>Separa en casa</h3><p>Pon en una bolsa aparte lo que se puede reciclar. Limpio y seco rinde más.</p></li>
+  <li class="reveal"><h3>Recolectamos</h3><p>Un reciclador de la asociación pasa por tu ruta y recoge el material.</p></li>
+  <li class="reveal"><h3>Clasificamos en bodega</h3><p>El material se separa por tipo, se pesa y se alista para entregarlo.</p></li>
+  <li class="reveal"><h3>Llega a la industria</h3><p>La industria lo transforma en nuevos productos y el ciclo vuelve a empezar.</p></li>
+</ol>
+  </div>
+</section>
+
+<section class="seccion seccion--verde" id="material">
+  <div class="contenedor">
+    <div class="seccion__cab reveal">
+      <span class="etiqueta">Guía rápida</span>
+      <h2>¿Qué puedes separar?</h2>
+      <p class="lead">Toca un material para ver qué sí y qué no se recicla.</p>
+    </div>
+    <div class="chips-material reveal">
+      <a class="chip-material" href="como-reciclar.html#aluminio"><span data-icon="cup-soda"></span>Aluminio</a>
+      <a class="chip-material" href="como-reciclar.html#chatarra"><span data-icon="wrench"></span>Chatarra</a>
+      <a class="chip-material" href="como-reciclar.html#pet"><span data-icon="recycle"></span>PET</a>
+      <a class="chip-material" href="como-reciclar.html#papel"><span data-icon="file-text"></span>Papel</a>
+      <a class="chip-material" href="como-reciclar.html#bolsas"><span data-icon="shopping-bag"></span>Bolsas</a>
+      <a class="chip-material" href="como-reciclar.html#vidrio"><span data-icon="wine"></span>Vidrio</a>
+      <a class="chip-material" href="como-reciclar.html#carton"><span data-icon="box"></span>Cartón</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="sec-cifras" hidden>
+  <div class="contenedor">
+    <div class="seccion__cab seccion__cab--centro reveal"><span class="etiqueta">Nuestros números</span><h2>Lo que hemos logrado</h2></div>
+    <div id="cifras"></div>
+  </div>
+</section>
+
+<section class="seccion seccion--verde" id="sec-galeria" hidden>
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">En acción</span><h2>Así trabajamos</h2></div>
+    <div class="galeria-wrap" id="galeria-wrap">
+      <div id="galeria"></div>
+      <div id="video-caja"></div>
+    </div>
+  </div>
+</section>
+<dialog class="visor" id="visor" aria-label="Foto ampliada"><button type="button" data-cerrar aria-label="Cerrar foto">✕</button><img alt=""></dialog>
+
+<section class="seccion" id="sec-noticias">
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Noticias</span><h2>Lo último que hacemos</h2></div>
+    <div id="ultimas-noticias"></div>
+    <p style="margin-top:1.4rem"><a class="btn btn--borde" href="noticias.html">Ver todas las noticias <span data-icon="arrow-right"></span></a></p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:0">
+  <div class="contenedor">
+    <div class="cta-final reveal">
+      <h2>¿Tienes material para reciclar?</h2>
+      <p>Cuéntanos tu barrio y qué material tienes. Te decimos cómo recogerlo.</p>
+      <div class="heroe__acciones">
+        <a class="btn btn--claro btn--grande" href="contacto.html?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span> Pedir una recolección</a>
+        <a class="btn btn--borde-claro btn--grande" href="rutas-y-horarios.html">Consultar mi ruta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/icons.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

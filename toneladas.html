@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toneladas aprovechadas · Asociación Global Villavo</title>
+<meta name="description" content="Gráfica mensual y total anual de las toneladas de material aprovechado.">
+<meta name="theme-color" content="#0c3b1e">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Toneladas aprovechadas · Asociación Global Villavo">
+<meta property="og:description" content="Gráfica mensual y total anual de las toneladas de material aprovechado.">
+<meta property="og:image" content="img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>try{var d=document.documentElement,t=localStorage.getItem('tam');if(t)d.dataset.tam=t;if(localStorage.getItem('contraste')==='1')d.classList.add('alto-contraste');}catch(e){}document.documentElement.classList.add('con-js');</script>
+</head>
+<body data-page="toneladas">
+<main id="contenido">
+<section class="portada-pagina">
+  <div class="contenedor">
+    <p class="migas"><a href="index.html">Inicio</a> / Toneladas aprovechadas</p>
+    <h1>Toneladas aprovechadas</h1>
+    <p>Cuánto material recuperamos cada mes. Lo que se separa bien, se aprovecha.</p>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,42 C200,96 420,4 700,40 C960,74 1180,104 1440,48 L1440,90 L0,90 Z"/></svg>
+</section>
+<section class="seccion">
+  <div class="contenedor">
+    <div id="t-vacio"></div>
+    <div id="t-contenido">
+      <div class="grafica reveal">
+        <div class="grafica__cab">
+          <h2>Toneladas aprovechadas por mes</h2>
+          <div><label for="sel-anio" class="solo-lectores">Año</label><select id="sel-anio"></select></div>
+        </div>
+        <div id="t-barras"></div>
+      </div>
+      <div class="totales" id="t-totales"></div>
+      <details class="tarjeta tarjeta--plana" style="margin-top:1.4rem">
+        <summary style="cursor:pointer;font:800 1rem var(--f-titulo);min-height:44px;display:flex;align-items:center">Ver los datos en tabla</summary>
+        <div class="tabla-caja" style="box-shadow:none;margin-top:1rem">
+          <table id="t-tabla"><caption class="solo-lectores">Toneladas por mes</caption><thead><tr><th scope="col">Mes</th><th scope="col" class="num">Aprovechadas (t)</th><th scope="col" class="num">Rechazo (t)</th></tr></thead><tbody></tbody><tfoot></tfoot></table>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/icons.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

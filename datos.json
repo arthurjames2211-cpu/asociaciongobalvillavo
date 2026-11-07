@@ -1,0 +1,50 @@
+{
+  "empresa": {
+    "nombre": "Asociación Global Villavo",
+    "ciudad": "Villavicencio",
+    "lema": null,
+    "fundacion": null,
+    "telefono": null,
+    "whatsapp": null,
+    "correo": null,
+    "direccion": null,
+    "horario": null,
+    "mapaUrl": null
+  },
+  "redes": {
+    "facebook": null,
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null,
+    "x": null
+  },
+  "legal": {
+    "nit": null,
+    "representanteLegal": null,
+    "politicaDatosUrl": null
+  },
+  "inicio": {
+    "titular": null,
+    "subtitulo": null,
+    "galeria": [],
+    "video": null
+  },
+  "quienes": {
+    "historia": null,
+    "mision": null,
+    "vision": null,
+    "trabajoSocial": null,
+    "equipo": [],
+    "certificaciones": []
+  },
+  "servicios": {
+    "reciben": [],
+    "recolectan": [],
+    "comoPedir": [],
+    "tarifa": null
+  },
+  "mostrarTelefonosRecicladores": false,
+  "zonas": [],
+  "toneladas": [],
+  "noticias": []
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rutas y horarios · Asociación Global Villavo</title>
+<meta name="description" content="Consulta los días y horarios de recolección de tu zona.">
+<meta name="theme-color" content="#0c3b1e">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Rutas y horarios · Asociación Global Villavo">
+<meta property="og:description" content="Consulta los días y horarios de recolección de tu zona.">
+<meta property="og:image" content="img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/open-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>try{var d=document.documentElement,t=localStorage.getItem('tam');if(t)d.dataset.tam=t;if(localStorage.getItem('contraste')==='1')d.classList.add('alto-contraste');}catch(e){}document.documentElement.classList.add('con-js');</script>
+</head>
+<body data-page="rutas">
+<main id="contenido">
+<section class="portada-pagina">
+  <div class="contenedor">
+    <p class="migas"><a href="index.html">Inicio</a> / Rutas y horarios</p>
+    <h1>Rutas y horarios</h1>
+    <p>Elige tu zona y mira los días, el horario y a quién contactar.</p>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,42 C200,96 420,4 700,40 C960,74 1180,104 1440,48 L1440,90 L0,90 Z"/></svg>
+</section>
+<section class="seccion">
+  <div class="contenedor">
+    <div id="rutas-info"></div>
+    <div id="rutas-contenido">
+      <div class="grafica__cab">
+        <div><label for="sel-zona" class="h3" style="display:block;margin-bottom:.4rem">Elige tu zona</label>
+        <select id="sel-zona" class="campo" style="min-width:min(100%,320px)"></select></div>
+      </div>
+      <div class="tabla-caja">
+        <table id="tabla-rutas">
+          <caption class="solo-lectores">Rutas de recolección por zona</caption>
+          <thead><tr><th scope="col">Zona</th><th scope="col">Días</th><th scope="col">Horario</th><th scope="col">Contacto</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p style="margin-top:1rem;color:var(--texto-suave)">¿No ves tu barrio? <a href="contacto.html#formulario">Escríbenos</a> y te decimos si llegamos.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/icons.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
