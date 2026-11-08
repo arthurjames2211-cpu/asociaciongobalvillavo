@@ -33,7 +33,7 @@
     ['servicios', 'Servicios', 'servicios.html'],
     ['reciclar', 'Cómo reciclar', 'como-reciclar.html'],
     ['rutas', 'Rutas y horarios', 'rutas-y-horarios.html'],
-    ['toneladas', 'Toneladas aprovechadas', 'toneladas.html'],
+    ['toneladas', 'Toneladas aprovechadas', 'toneladas.html', 'Toneladas'],
     ['noticias', 'Noticias', 'noticias.html'],
     ['contacto', 'Contacto', 'contacto.html'],
   ];
@@ -46,7 +46,7 @@
     'empresa.correo': ['Correo electrónico', 'Pie y Contacto'],
     'empresa.direccion': ['Dirección', 'Pie y Contacto'],
     'empresa.horario': ['Horario de atención', 'Encabezado, pie y Contacto'],
-    'empresa.mapaUrl': ['Mapa o cómo llegar (enlace de inserción de Google Maps)', 'Contacto'],
+    'empresa.mapaUrl': ['Mapa o cómo llegar (enlace de inserción de Google Maps; también se puede agregar un video corto de cómo llegar)', 'Contacto'],
     'redes.facebook': ['Enlace de Facebook', 'Encabezado, pie y Contacto'],
     'redes.instagram': ['Enlace de Instagram', 'Encabezado, pie y Contacto'],
     'redes.tiktok': ['Enlace de TikTok', 'Encabezado, pie y Contacto'],
@@ -65,7 +65,11 @@
     'servicios.reciben': ['Materiales que recibimos', 'Servicios'],
     'servicios.recolectan': ['Qué recolectamos y dónde', 'Servicios'],
     'servicios.comoPedir': ['Pasos para pedir el servicio', 'Servicios'],
-    'servicios.tarifa': ['Costo y condiciones de la recolección (por ejemplo, desde qué cantidad de material es gratis)', 'Servicios'],
+    'servicios.tarifa': ['Costo y condiciones de la recolección (¿desde qué cantidad es gratis, por ejemplo 250 kg?, ¿cuánto cuesta por debajo de ese peso?)', 'Servicios'],
+    'servicios.certificados': ['Certificados de aprovechamiento: cómo se solicitan o dónde se descargan', 'Servicios'],
+    'servicios.contratoUrl': ['Contrato de condiciones uniformes (enlace al documento)', 'Servicios'],
+    'servicios.bodega': ['Estación de clasificación y aprovechamiento (la bodega): dónde queda y qué se hace allí', 'Servicios'],
+    'quienes.normatividad': ['Normatividad que cumple la asociación (normas, con enlace si existe)', 'Quiénes somos'],
     'zonas': ['Zonas o rutas con días, horario y a quién contactar', 'Rutas y horarios, buscador del inicio'],
     'toneladas': ['Toneladas de cada mes (año, mes, aprovechadas y rechazo)', 'Toneladas aprovechadas, cifras del inicio'],
     'noticias': ['Noticias con foto', 'Noticias, inicio'],
@@ -98,6 +102,7 @@
   const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
   /* ---------- Accesibilidad (tamaño de letra y contraste) ---------- */
+  const NIVELES = ['Normal', 'Grande', 'Más grande', 'Muy grande'];
   function aplicarPrefs() {
     const t = store.get('tam'); if (t) ROOT.dataset.tam = t;
     ROOT.classList.toggle('alto-contraste', store.get('contraste') === '1');
@@ -106,20 +111,24 @@
     let t = parseInt(ROOT.dataset.tam || '0', 10) + delta;
     t = Math.max(0, Math.min(3, t));
     ROOT.dataset.tam = String(t); store.set('tam', String(t));
+    const n = $('#a11y-nivel'); if (n) n.textContent = NIVELES[t];
   }
-  function alternarContraste(btn) {
-    const on = !ROOT.classList.contains('alto-contraste');
+  function ponerContraste(on) {
     ROOT.classList.toggle('alto-contraste', on); store.set('contraste', on ? '1' : '0');
-    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    const b = $('[data-a11y="contraste"]'); if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+  function restablecerA11y() {
+    delete ROOT.dataset.tam; store.del('tam'); ponerContraste(false);
+    const n = $('#a11y-nivel'); if (n) n.textContent = NIVELES[0];
   }
 
   /* ---------- Redes ---------- */
-  function htmlRedes(grande) {
+  function htmlRedes(grande, clase) {
     const r = D.redes || {};
     const lista = [['facebook', 'Facebook'], ['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['youtube', 'YouTube'], ['x', 'X']]
       .filter(([k]) => !vacio(r[k]));
     if (!lista.length) return '';
-    return `<div class="redes${grande ? ' redes--grande' : ''}" role="list">${lista.map(([k, n]) =>
+    return `<div class="${clase || 'redes'}${grande ? ' redes--grande' : ''}" role="list">${lista.map(([k, n]) =>
       `<a role="listitem" href="${esc(r[k])}" target="_blank" rel="noopener" aria-label="${n} de ${esc(nombre())}" title="${n}">${brand(k)}</a>`).join('')}</div>`;
   }
 
@@ -127,57 +136,84 @@
   function renderCabecera(pagina) {
     const e = D.empresa || {};
     const wa = waLink(msgBase());
-    const tel = e.telefono ? `<a href="tel:${esc(String(e.telefono).replace(/[^\d+]/g, ''))}">${icon('phone')} ${esc(e.telefono)}</a>` : '';
-    const mail = e.correo ? `<a href="mailto:${esc(e.correo)}">${icon('mail')} ${esc(e.correo)}</a>` : '';
-    const hor = e.horario ? `<span>${icon('clock')} ${esc(e.horario)}</span>` : '';
-    const top = `
-      <div class="barra-top">
-        <div class="contenedor">
-          <div class="barra-top__datos">${tel}${mail}${hor}</div>
-          <div class="barra-top__der">
-            <div class="a11y" role="group" aria-label="Opciones de accesibilidad">
-              <button type="button" data-a11y="menos" aria-label="Reducir el tamaño del texto">A−</button>
-              <button type="button" data-a11y="mas" aria-label="Aumentar el tamaño del texto">A+</button>
-              <button type="button" data-a11y="contraste" aria-pressed="${ROOT.classList.contains('alto-contraste')}" aria-label="Alto contraste"><span class="hide-s">Alto contraste</span><span class="show-s">Contraste</span></button>
-            </div>
-            ${htmlRedes(false)}
-          </div>
-        </div>
-      </div>`;
-    const nav = PAGINAS.map(([id, txt, href]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${txt}</a></li>`).join('');
+    const nav = PAGINAS.map(([id, txt, href, corto]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${corto || txt}</a></li>`).join('');
+    const hoja = PAGINAS.map(([id, txt, href]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${txt}</a></li>`).join('');
     const botonWa = wa
-      ? `<a class="btn btn--wa btn--chico cabecera__wa" href="${esc(wa)}" target="_blank" rel="noopener">${brand('whatsapp', '#fff')}<span>WhatsApp</span></a>`
-      : `<span class="pend-chip cabecera__wa">Falta WhatsApp</span>`;
+      ? `<a class="btn btn--wa btn--chico cabecera__wa cab__wa" href="${esc(wa)}" target="_blank" rel="noopener">${brand('whatsapp', '#fff')}<span>WhatsApp</span></a>`
+      : `<span class="pend-chip cabecera__wa cab__wa">Falta WhatsApp</span>`;
     if (!wa) vistos.add('empresa.whatsapp');
+    const contactoMini = [
+      e.telefono ? `<li>${icon('phone')}<a href="tel:${esc(String(e.telefono).replace(/[^\d+]/g, ''))}">${esc(e.telefono)}</a></li>` : '',
+      e.correo ? `<li>${icon('mail')}<a href="mailto:${esc(e.correo)}">${esc(e.correo)}</a></li>` : '',
+      e.horario ? `<li>${icon('clock')}${esc(e.horario)}</li>` : '',
+    ].join('');
     const cab = `
-      <header class="cabecera" id="cabecera">
-        <div class="contenedor">
+      <header class="cab" id="cabecera">
+        <div class="cab__pill">
           <a class="marca" href="index.html" aria-label="${esc(nombre())}, ir al inicio">
-            <img src="img/logo.webp" width="54" height="54" alt="">
+            <img src="img/logo.png" width="48" height="48" alt="">
             <span class="marca__texto"><strong>${esc(nombre())}</strong>${e.ciudad ? `<small>${esc(e.ciudad)}</small>` : ''}</span>
           </a>
-          ${botonWa}
-          <button class="btn-menu" type="button" aria-expanded="false" aria-controls="menu-principal">${icon('menu')}<span>Menú</span></button>
-          <nav class="nav" id="menu-principal" aria-label="Principal" data-abierto="false"><ul>${nav}</ul></nav>
+          <nav class="nav" id="menu-principal" aria-label="Principal"><ul>${nav}</ul></nav>
+          <div class="cab__der">
+            ${htmlRedes(false, 'avatares')}
+            ${botonWa}
+            <button class="btn-menu" type="button" aria-expanded="false" aria-controls="hoja-menu" aria-label="Menú" title="Menú"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+          </div>
         </div>
-      </header>`;
+      </header>
+      <div class="hoja-menu" id="hoja-menu" role="dialog" aria-label="Menú principal">
+        <nav aria-label="Menú principal"><ol>${hoja}</ol></nav>
+        <div class="hoja-menu__pie">
+          ${wa ? `<a class="btn btn--wa btn--grande" href="${esc(wa)}" target="_blank" rel="noopener">${brand('whatsapp', '#fff')}<span>Escríbenos por WhatsApp</span></a>` : ''}
+          ${contactoMini ? `<ul class="contacto-mini">${contactoMini}</ul>` : ''}
+          ${htmlRedes(false)}
+        </div>
+      </div>`;
     const saltar = `<a class="saltar" href="#contenido">Saltar al contenido</a>`;
-    document.body.insertAdjacentHTML('afterbegin', saltar + top + cab);
+    document.body.insertAdjacentHTML('afterbegin', saltar + cab);
 
-    // menú móvil
-    const btn = $('.btn-menu'); const menu = $('#menu-principal');
-    const cerrar = () => { menu.dataset.abierto = 'false'; btn.setAttribute('aria-expanded', 'false'); btn.innerHTML = `${icon('menu')}<span>Menú</span>`; };
-    btn.addEventListener('click', () => {
-      const abierto = menu.dataset.abierto === 'true';
-      if (abierto) { cerrar(); } else { menu.dataset.abierto = 'true'; btn.setAttribute('aria-expanded', 'true'); btn.innerHTML = `${icon('x')}<span>Cerrar</span>`; }
-    });
-    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && menu.dataset.abierto === 'true') { cerrar(); btn.focus(); } });
-    $$('a', menu).forEach((a) => a.addEventListener('click', cerrar));
+    // menú móvil (hoja a pantalla completa)
+    const btn = $('.btn-menu'); const hojaEl = $('#hoja-menu');
+    const abrir = (v) => {
+      hojaEl.classList.toggle('abierta', v); document.body.classList.toggle('menu-abierto', v);
+      btn.setAttribute('aria-expanded', v ? 'true' : 'false'); btn.setAttribute('aria-label', v ? 'Cerrar menú' : 'Menú');
+    };
+    btn.addEventListener('click', () => abrir(!hojaEl.classList.contains('abierta')));
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && hojaEl.classList.contains('abierta')) { abrir(false); btn.focus(); } });
+    $$('a', hojaEl).forEach((a) => a.addEventListener('click', () => abrir(false)));
+    window.matchMedia('(min-width: 1161px)').addEventListener('change', (m) => { if (m.matches) abrir(false); });
+  }
 
-    // accesibilidad
-    $$('[data-a11y]').forEach((b) => b.addEventListener('click', () => {
+  /* Accesibilidad: botón flotante con panel (tamaño de letra y alto contraste) */
+  function renderAccesibilidad() {
+    const nivel = parseInt(ROOT.dataset.tam || '0', 10);
+    document.body.insertAdjacentHTML('beforeend', `
+      <div class="a11y-fab">
+        <div class="a11y-panel" id="a11y-panel" role="group" aria-labelledby="a11y-titulo" hidden>
+          <h2 id="a11y-titulo">Accesibilidad</h2>
+          <div class="fila"><span id="a11y-lbl-letra">Tamaño del texto</span>
+            <span class="pasos-letra" role="group" aria-labelledby="a11y-lbl-letra">
+              <button type="button" class="mini" data-a11y="menos" aria-label="Reducir el texto">${icon('minus')}</button>
+              <span class="nivel" id="a11y-nivel" aria-live="polite">${NIVELES[nivel] || NIVELES[0]}</span>
+              <button type="button" class="mini" data-a11y="mas" aria-label="Aumentar el texto">${icon('plus')}</button>
+            </span></div>
+          <div class="fila"><span id="a11y-lbl-contraste">Alto contraste</span>
+            <button type="button" class="interruptor" data-a11y="contraste" role="switch" aria-labelledby="a11y-lbl-contraste" aria-pressed="${ROOT.classList.contains('alto-contraste')}"></button></div>
+          <button type="button" class="btn btn--borde btn--chico restablecer" data-a11y="reset">${icon('rotate-ccw')} Restablecer</button>
+        </div>
+        <button type="button" class="a11y-fab__btn" id="a11y-boton" aria-expanded="false" aria-controls="a11y-panel" aria-label="Opciones de accesibilidad" title="Accesibilidad">${icon('accessibility')}</button>
+      </div>`);
+    const boton = $('#a11y-boton'); const panel = $('#a11y-panel');
+    const cerrar = () => { panel.hidden = true; boton.setAttribute('aria-expanded', 'false'); };
+    boton.addEventListener('click', () => { const abre = panel.hidden; panel.hidden = !abre; boton.setAttribute('aria-expanded', abre ? 'true' : 'false'); });
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !panel.hidden) { cerrar(); boton.focus(); } });
+    document.addEventListener('click', (ev) => { if (!panel.hidden && !ev.target.closest('.a11y-fab')) cerrar(); });
+    $$('[data-a11y]', panel).forEach((b) => b.addEventListener('click', () => {
       const k = b.dataset.a11y;
-      if (k === 'mas') cambiarTam(1); else if (k === 'menos') cambiarTam(-1); else alternarContraste(b);
+      if (k === 'mas') cambiarTam(1); else if (k === 'menos') cambiarTam(-1);
+      else if (k === 'reset') restablecerA11y();
+      else ponerContraste(!ROOT.classList.contains('alto-contraste'));
     }));
   }
 
@@ -199,7 +235,7 @@
         <div class="contenedor">
           <div class="pie__grid">
             <div>
-              <div class="pie__marca"><img src="img/logo.webp" width="64" height="64" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
+              <div class="pie__marca"><img src="img/logo.png" width="66" height="66" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
               <p>${e.lema ? esc(e.lema) : 'Reciclaje que cuida el ambiente y a las personas que lo hacen posible.'}</p>
             </div>
             <div>
@@ -282,6 +318,11 @@
     const zonas = D.zonas || [];
     const dl = $('#lista-zonas');
     const campo = $('#buscar-zona'); const res = $('#buscar-res');
+    const chips = $('#chips-zona');
+    if (chips && zonas.length) {
+      chips.innerHTML = '<span>Prueba con:</span>' + zonas.slice(0, 5).map((z) => `<button type="button" data-zona="${esc(z.nombre)}">${esc(z.nombre)}</button>`).join('');
+      $$('[data-zona]', chips).forEach((b) => b.addEventListener('click', () => { campo.value = b.dataset.zona; buscar(); }));
+    }
     if (dl) dl.innerHTML = zonas.flatMap((z) => [z.nombre].concat(z.barrios || [])).filter((v, i, a) => v && a.indexOf(v) === i).map((v) => `<option value="${esc(v)}">`).join('');
     const buscar = () => {
       const q = (campo.value || '').trim().toLowerCase();
@@ -298,6 +339,14 @@
     $('#form-buscar').addEventListener('submit', (ev) => { ev.preventDefault(); buscar(); });
     campo.addEventListener('input', () => { if (zonas.length) buscar(); });
     if (!zonas.length) { res.innerHTML = pend('zonas'); }
+
+    // Trabajo social (lo que casi nadie muestra): solo se publica si hay texto
+    const ts = D.quienes && D.quienes.trabajoSocial;
+    const sc = $('#social-caja');
+    if (!vacio(ts)) {
+      const primero = String(ts).split(/\n+/)[0];
+      sc.innerHTML = `<div class="social-banda reveal"><div class="icono-caja">${icon('hand-heart')}</div><div><span class="etiqueta">Más que reciclaje</span><h2>Cuidamos a quienes reciclan</h2><p>${esc(primero)}</p><a class="btn btn--borde btn--chico" href="quienes-somos.html#trabajo-social">Conoce nuestro trabajo social ${icon('arrow-right')}</a></div></div>`;
+    } else { $('#sec-social').classList.add('solo-admin'); sc.innerHTML = pend('quienes.trabajoSocial', 'aparecerá aquí en el inicio'); }
 
     // Cifras
     const caja = $('#cifras');
@@ -375,15 +424,20 @@
       + (l.nit ? '' : pend('legal.nit')) + (l.representanteLegal ? '' : pend('legal.representanteLegal'))
       + (l.politicaDatosUrl ? `<p><a href="${esc(l.politicaDatosUrl)}" target="_blank" rel="noopener">Política de tratamiento de datos personales</a></p>` : pend('legal.politicaDatosUrl'));
     $$('#q-legal .datos-contacto li').forEach((li) => { const s = li.querySelector('svg'); if (s) { const w = document.createElement('div'); w.className = 'icono-caja'; s.replaceWith(w); w.appendChild(s); } });
+    const nor = q.normatividad || [];
+    $('#q-norma').innerHTML = nor.length
+      ? `<ul class="lista-chulos">${nor.map((n) => { const t = typeof n === 'string' ? n : n.nombre; const u = n && n.url; return `<li>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>` : esc(t)}</li>`; }).join('')}</ul>`
+      : pend('quienes.normatividad');
     // el público no ve secciones vacías
     const oculta = (id, vacia) => { const el = $(id); if (el && vacia) el.classList.add('solo-admin'); };
     oculta('#q-sec-mv', vacio(q.mision) && vacio(q.vision));
     oculta('#q-sec-equipo', !eq.length);
+    oculta('#q-sec-norma', !nor.length);
     oculta('#q-col-certs', !ce.length);
     oculta('#q-col-legal', !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
     oculta('#q-sec-info', !ce.length && !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
     // si nada se publicó, mensaje para el público
-    const hayAlgo = ['historia', 'mision', 'vision', 'trabajoSocial'].some((k) => !vacio(q[k])) || eq.length || ce.length || l.nit || l.representanteLegal;
+    const hayAlgo = ['historia', 'mision', 'vision', 'trabajoSocial'].some((k) => !vacio(q[k])) || eq.length || ce.length || nor.length || l.nit || l.representanteLegal;
     if (!hayAlgo) $('#q-vacio').innerHTML = vaciaPublica('sprout', 'Estamos preparando esta página con nuestra historia, misión, visión y equipo.');
   };
 
@@ -399,6 +453,14 @@
     $('#s-tarifa').innerHTML = vacio(s.tarifa)
       ? pend('servicios.tarifa')
       : `<div class="tarjeta tarjeta--verde tarjeta--plana reveal"><h3>Costo y condiciones</h3>${String(s.tarifa).split(/\n+/).map((p) => `<p>${esc(p)}</p>`).join('')}</div>`;
+    const bloque = (ic, titulo, cuerpo) => `<article class="tarjeta tarjeta--plana info-bloque reveal"><div class="icono-caja">${icon(ic)}</div><h3>${titulo}</h3>${cuerpo}</article>`;
+    const parr = (t) => String(t).split(/\n+/).map((p) => `<p>${esc(p)}</p>`).join('');
+    let info = '';
+    info += vacio(s.certificados) ? pend('servicios.certificados') : bloque('file-check', 'Certificados de aprovechamiento', parr(s.certificados));
+    info += vacio(s.contratoUrl) ? pend('servicios.contratoUrl') : bloque('scroll-text', 'Contrato de condiciones uniformes', `<p>Consulta las condiciones del servicio.</p><a class="enlace" href="${esc(s.contratoUrl)}" target="_blank" rel="noopener">Abrir el documento</a>`);
+    info += vacio(s.bodega) ? pend('servicios.bodega') : bloque('warehouse', 'Estación de clasificación y aprovechamiento', parr(s.bodega));
+    info += bloque('megaphone', 'Peticiones, quejas, reclamos y sugerencias', `<p>Cuéntanos qué pasó o qué podemos mejorar. Respondemos por el medio que elijas.</p><a class="enlace" href="contacto.html?asunto=peticion#formulario">Presentar una PQRS</a>`);
+    $('#s-info').innerHTML = info;
     const ocultaS = (id, vacia) => { const el = $(id); if (el && vacia) el.classList.add('solo-admin'); };
     ocultaS('#s-card-reciben', vacio(s.reciben)); ocultaS('#s-card-recolectan', vacio(s.recolectan));
     ocultaS('#s-rejilla', vacio(s.reciben) && vacio(s.recolectan)); ocultaS('#s-como-bloque', !pasos.length);
@@ -503,6 +565,7 @@
     $('#c-datos').innerHTML = items.join('');
     const r = htmlRedes(true);
     $('#c-redes').innerHTML = r ? `<h2 class="h3">Síguenos</h2>${r}` : ['facebook', 'instagram', 'tiktok', 'youtube'].map((k) => pend('redes.' + k)).join('');
+    if (!e.mapaUrl) $('#c-sec-mapa').classList.add('solo-admin');
     $('#c-mapa').innerHTML = e.mapaUrl
       ? `<div class="tarjeta tarjeta--plana" style="padding:0;overflow:hidden"><iframe title="Mapa de ${esc(nombre())}" src="${esc(e.mapaUrl)}" width="100%" height="320" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`
       : pend('empresa.mapaUrl');
@@ -536,7 +599,7 @@
       ['nombre', (v) => v.trim().length >= 3, 'Escribe tu nombre completo.'],
       ['telefono', (v) => v.replace(/\D/g, '').length >= 7, 'Escribe un teléfono válido, con al menos 7 números.'],
       ['correo', (v) => v === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Revisa el correo: debe tener la forma nombre@dominio.com.'],
-      ['asunto', (v) => v !== '', 'Elige si es una solicitud, queja o sugerencia.'],
+      ['asunto', (v) => v !== '', 'Elige si es una solicitud, petición, queja, reclamo o sugerencia.'],
       ['mensaje', (v) => v.trim().length >= 10, 'Cuéntanos un poco más (mínimo 10 letras).'],
     ];
     const err = (campo, txt) => {
@@ -640,10 +703,12 @@
     if (paginas[pagina]) paginas[pagina]();
     renderPie(pagina);
     renderWaFlotante();
+    renderAccesibilidad();
     if (admin) barraAdmin();
     // título con el nombre de la empresa
     const h1 = $('h1'); if (h1 && pagina !== 'inicio') document.title = `${h1.textContent.trim()} · ${nombre()}`;
     observarReveal();
+    if (sinMovimiento) $$('.escena svg').forEach((sv) => { try { sv.pauseAnimations(); } catch (e) { /* sin SMIL */ } });
     $$('.reveal').forEach((el, i) => { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', ((i % 4) * 0.07) + 's'); });
   }
 

@@ -35,13 +35,17 @@
     "vision": null,
     "trabajoSocial": null,
     "equipo": [],
-    "certificaciones": []
+    "certificaciones": [],
+    "normatividad": []
   },
   "servicios": {
     "reciben": [],
     "recolectan": [],
     "comoPedir": [],
-    "tarifa": null
+    "tarifa": null,
+    "certificados": null,
+    "contratoUrl": null,
+    "bodega": null
   },
   "mostrarTelefonosRecicladores": false,
   "zonas": [],

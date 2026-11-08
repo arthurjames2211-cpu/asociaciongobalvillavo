@@ -92,11 +92,21 @@ El correo debe ser de un miembro activo del equipo de Netlify. Los mensajes tamb
 
 ## Accesibilidad
 
-Enlace «Saltar al contenido», botones A−/A+ para el tamaño del texto, modo de alto contraste, foco visible y respeto por `prefers-reduced-motion`. Las preferencias se recuerdan en el navegador.
+Enlace «Saltar al contenido», botón flotante de accesibilidad (tamaño del texto A−/A+, alto contraste y restablecer), foco visible, tipografía de alta legibilidad y respeto por `prefers-reduced-motion` (también se detienen las animaciones del ciclo). Las preferencias se recuerdan en el navegador.
 
-## Colores y tipografía
+## Colores, tipografía y logo
 
-Los colores están al inicio de `css/styles.css` (bloque `:root`). Fuentes: Montserrat (títulos) y Open Sans (texto), incluidas en `fonts/`.
+- Colores: bloque `:root` al inicio de `css/styles.css`. Azul cielo (`--c500`, `--c600`) como color de marca, verde hoja y amarillo sol como acentos.
+- Fuentes: Nunito (títulos) y Atkinson Hyperlegible Next (texto, pensada para leer fácil), incluidas en `fonts/`.
+- **Logo:** reemplaza `img/logo.png` (PNG transparente, mínimo 1024 px). El encabezado, el inicio, el pie y la escena del ciclo lo usan desde ahí. Después genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp).
+
+## Información regulada (Servicios y Quiénes somos)
+
+Campos opcionales en `datos.json`: `servicios.certificados`, `servicios.contratoUrl`, `servicios.bodega`, `quienes.normatividad` (lista), `legal.nit`, `legal.representanteLegal`. Los que están vacíos no se muestran al público. En Servicios siempre aparece el bloque de peticiones, quejas, reclamos y sugerencias, que usa el formulario de contacto.
+
+## Noticias: cómo las va a publicar la asociación
+
+Este sitio es estático: publicar una noticia significa agregar un bloque a `noticias` en `datos.json` (y subir la foto). Es sencillo, pero no es un panel con botones. Si la persona que publicará cada semana prefiere un editor visual, hay dos caminos: (1) pasar el sitio a WordPress en el hosting que ya tiene, o (2) agregar un panel como Decap CMS sobre este mismo repositorio. Se decide con la asociación.
 
 ## Publicación
 
