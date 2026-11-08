@@ -98,7 +98,8 @@ Enlace «Saltar al contenido», botón flotante de accesibilidad (tamaño del te
 
 - Colores: bloque `:root` al inicio de `css/styles.css`. Azul cielo (`--c500`, `--c600`) como color de marca, verde hoja y amarillo sol como acentos.
 - Fuentes: Nunito (títulos) y Atkinson Hyperlegible Next (texto, pensada para leer fácil), incluidas en `fonts/`.
-- **Logo:** reemplaza `img/logo.png` (PNG transparente, mínimo 1024 px). El encabezado, el inicio, el pie y la escena del ciclo lo usan desde ahí. Después genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp).
+- **Logo:** `img/logo.png` (720 px, fondo transparente) se usa en la portada y en la escena del ciclo; `img/logo-sm.png` (192 px) en el encabezado y el pie. Si cambias el logo, reemplaza esos dos archivos y genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp). Si tienes el logo original en alta resolución (PNG transparente, 1500 px o más), úsalo: el actual se recortó de una captura de baja resolución.
+- **WordPress:** más adelante la asociación pasará las noticias (y quizá todo el sitio) a WordPress. Este sitio está pensado para esa migración: el contenido está separado en `datos.json`.
 
 ## Información regulada (Servicios y Quiénes somos)
 

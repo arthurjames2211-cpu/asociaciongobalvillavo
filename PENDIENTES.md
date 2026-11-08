@@ -34,7 +34,7 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 - [ ] Galería de 6 a 8 fotos buenas y un video vertical corto (se grabarán en la visita de la próxima semana; las fotos actuales de las recicladoras salen borrosas o a contraluz)
 
 ## Marca
-- [ ] **Logo definitivo** (lo enviará el cliente). Va en `img/logo.png`: PNG con fondo transparente, mínimo 1024 px. Luego se regeneran el favicon, el ícono de iPhone y la imagen para compartir (`og-image.jpg`). El que está ahora es provisional
+- [ ] Logo: ya está el logo nuevo, recortado de una captura (baja resolución). Si existe el archivo original en alta resolución (PNG con fondo transparente, 1500 px o más), reemplazar `img/logo.png`, `img/logo-sm.png` y los íconos (ver README)
 - [ ] Confirmar el azul cielo brillante de la marca (el sitio usa `#1480c4` y `#2aa7e6`; se ajustan en `css/styles.css`)
 
 ## Configuración

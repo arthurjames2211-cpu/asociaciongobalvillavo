@@ -151,7 +151,7 @@
       <header class="cab" id="cabecera">
         <div class="cab__pill">
           <a class="marca" href="index.html" aria-label="${esc(nombre())}, ir al inicio">
-            <img src="img/logo.png" width="48" height="48" alt="">
+            <img src="img/logo-sm.png" width="48" height="48" alt="">
             <span class="marca__texto"><strong>${esc(nombre())}</strong>${e.ciudad ? `<small>${esc(e.ciudad)}</small>` : ''}</span>
           </a>
           <nav class="nav" id="menu-principal" aria-label="Principal"><ul>${nav}</ul></nav>
@@ -235,7 +235,7 @@
         <div class="contenedor">
           <div class="pie__grid">
             <div>
-              <div class="pie__marca"><img src="img/logo.png" width="66" height="66" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
+              <div class="pie__marca"><img src="img/logo-sm.png" width="66" height="66" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
               <p>${e.lema ? esc(e.lema) : 'Reciclaje que cuida el ambiente y a las personas que lo hacen posible.'}</p>
             </div>
             <div>
