@@ -98,7 +98,7 @@ Enlace «Saltar al contenido», botón flotante de accesibilidad (tamaño del te
 
 - Colores: bloque `:root` al inicio de `css/styles.css`. Azul cielo (`--c500`, `--c600`) como color de marca, verde hoja y amarillo sol como acentos.
 - Fuentes: Nunito (títulos) y Atkinson Hyperlegible Next (texto, pensada para leer fácil), incluidas en `fonts/`.
-- **Logo:** `img/logo.png` (720 px, fondo transparente) se usa en la portada; `img/logo-sm.png` (192 px) en el encabezado y el pie. Si cambias el logo, reemplaza esos dos archivos y genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp). Si tienes el logo original en alta resolución (PNG transparente, 1500 px o más), úsalo: el actual se recortó de una captura de baja resolución.
+- **Logo:** `img/logo.png` (800 px, fondo transparente) se usa en la portada; `img/logo-sm.png` (200 px) en el encabezado y el pie. Si cambias el logo, reemplaza esos dos archivos y genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp). Si tienes el logo original en alta resolución (PNG transparente, 1500 px o más), úsalo: el actual se recortó de una captura de baja resolución.
 - **WordPress:** más adelante la asociación pasará las noticias (y quizá todo el sitio) a WordPress. Este sitio está pensado para esa migración: el contenido está separado en `datos.json`.
 
 ## Versión pequeña
@@ -116,3 +116,17 @@ Este sitio es estático: publicar una noticia significa agregar un bloque a `not
 ## Publicación
 
 No hay build. Netlify publica la carpeta raíz (`netlify.toml`). Cada cambio en la rama `main` se publica solo. Si no ves un cambio, recarga con Ctrl + F5 o limpia la caché (*Deploys → Trigger deploy → Clear cache and deploy site*).
+
+## Animaciones
+
+Todas usan solo `transform`/`opacity` y se apagan con "reducir movimiento" del sistema (`prefers-reduced-motion`). Viven en el bloque `/* Animaciones extra */` de `css/styles.css`:
+
+- **Inicio (hero):** entrada escalonada del texto y el logo, sol que "respira", anillo que gira, burbujas que aparecen, 5 hojas que caen suavemente y agua que fluye en el fondo.
+- **Olas** de las portadas: se mecen lentas.
+- **Cabecera:** se compacta y gana sombra al bajar; barra de avance de lectura arriba (verde → azul → amarillo).
+- **Botones:** brillo que cruza al pasar el cursor; el logo de la cabecera se menea.
+- **Material y pasos:** los chips y los números aparecen en cascada al llegar a ellos.
+- **Llamado final:** luces suaves que derivan; WhatsApp flotante entra deslizando.
+- Entre páginas hay un fundido suave (navegadores que lo soportan).
+
+Para quitar alguna: borra su regla en ese bloque; no depende de nada más. Las hojas del hero se quitan eliminando los `<span class="hoja-vuela">` de `index.html` (o de `/tmp/scripts/gen.py` si se regenera).

@@ -147,7 +147,7 @@
     const nav = paginasVisibles(pagina).map(([id, txt, href, corto]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${corto || txt}</a></li>`).join('');
     const hoja = paginasVisibles(pagina).map(([id, txt, href]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${txt}</a></li>`).join('');
     const botonWa = wa
-      ? `<a class="btn btn--wa btn--chico cabecera__wa cab__wa" href="${esc(wa)}" target="_blank" rel="noopener">${brand('whatsapp', '#fff')}<span>WhatsApp</span></a>`
+      ? `<a class="btn btn--wa btn--chico cabecera__wa cab__wa" href="${esc(wa)}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">${brand('whatsapp', '#fff')}<span>WhatsApp</span></a>`
       : `<span class="pend-chip cabecera__wa cab__wa">Falta WhatsApp</span>`;
     if (!wa) vistos.add('empresa.whatsapp');
     const contactoMini = [
@@ -704,6 +704,25 @@
     }
   }
 
+  // Efectos ligados al scroll: barra de avance y cabecera compacta
+  function efectosScroll() {
+    const cab = $('#cabecera');
+    const barra = document.createElement('div');
+    barra.className = 'progreso'; barra.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(barra);
+    let espera = false;
+    const act = () => {
+      espera = false;
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      barra.style.setProperty('--p', max > 0 ? Math.min(1, y / max).toFixed(4) : '0');
+      if (cab) cab.classList.toggle('cab--scroll', y > 24);
+    };
+    window.addEventListener('scroll', () => { if (!espera) { espera = true; requestAnimationFrame(act); } }, { passive: true });
+    window.addEventListener('resize', act);
+    act();
+  }
+
   async function iniciar() {
     ROOT.classList.add('con-js');
     aplicarPrefs();
@@ -722,6 +741,8 @@
     const h1 = $('h1'); if (h1 && pagina !== 'inicio') document.title = `${h1.textContent.trim()} · ${nombre()}`;
     observarReveal();
     $$('.reveal').forEach((el, i) => { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', ((i % 4) * 0.07) + 's'); });
+    $$('.chips-material').forEach((c) => $$('.chip-material', c).forEach((el, i) => el.style.setProperty('--n', i)));
+    efectosScroll();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
