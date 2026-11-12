@@ -103,7 +103,7 @@ Enlace «Saltar al contenido», botón flotante de accesibilidad (tamaño del te
 
 ## Información regulada (Servicios y Quiénes somos)
 
-Campos opcionales en `datos.json`: `servicios.certificados`, `servicios.contratoUrl`, `servicios.bodega`, `quienes.normatividad` (lista), `legal.nit`, `legal.representanteLegal`. Los que están vacíos no se muestran al público. En Servicios siempre aparece el bloque de peticiones, quejas, reclamos y sugerencias, que usa el formulario de contacto.
+Campos opcionales en `datos.json`: `servicios.certificados`, `servicios.contratoUrl`, `servicios.bodega`, `quienes.normatividad` (lista), `quienes.objetivoGeneral`, `quienes.objetivos` (lista), `legal.razonSocial`, `legal.nit`, `legal.representanteLegal`. Los que están vacíos no se muestran al público. En Servicios siempre aparece el bloque de peticiones, quejas, reclamos y sugerencias, que usa el formulario de contacto.
 
 ## Noticias: cómo las va a publicar la asociación
 

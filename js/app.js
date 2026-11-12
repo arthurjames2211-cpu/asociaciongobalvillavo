@@ -56,9 +56,12 @@
     'quienes.historia': ['Historia de la asociación', 'Quiénes somos'],
     'quienes.mision': ['Misión', 'Quiénes somos'],
     'quienes.vision': ['Visión', 'Quiénes somos'],
+    'quienes.objetivoGeneral': ['Objetivo general', 'Quiénes somos'],
+    'quienes.objetivos': ['Objetivos específicos (lista)', 'Quiénes somos'],
     'quienes.trabajoSocial': ['Trabajo social con los recicladores y sus familias (actividades, capacitaciones, jornadas)', 'Quiénes somos'],
     'quienes.equipo': ['Equipo (solo con autorización escrita para publicar nombre y foto)', 'Quiénes somos'],
     'quienes.certificaciones': ['Certificaciones y registros (si existen)', 'Quiénes somos'],
+    'legal.razonSocial': ['Razón social (nombre legal completo)', 'Pie y Quiénes somos'],
     'legal.nit': ['NIT', 'Pie y Quiénes somos'],
     'legal.representanteLegal': ['Representante legal', 'Quiénes somos'],
     'legal.politicaDatosUrl': ['Política de tratamiento de datos personales (revisada por un abogado)', 'Pie y formulario de Contacto'],
@@ -253,7 +256,7 @@
             </div>
           </div>
           <div class="pie__legal">
-            <span>© ${new Date().getFullYear()} ${esc(nombre())}${l.nit ? ' · NIT ' + esc(l.nit) : ''}</span>
+            <span>© ${new Date().getFullYear()} ${esc(l.razonSocial || nombre())}${l.nit ? ' · NIT ' + esc(l.nit) : ''}</span>
             <span>${politica}</span>
           </div>
           ${l.nit ? '' : pend('legal.nit')}
@@ -405,6 +408,10 @@
     const historia = vacio(q.historia) ? pend('quienes.historia') : `<div class="reveal"><span class="etiqueta">Nuestra historia</span><h2>Cómo empezamos</h2>${q.historia.split(/\n+/).map((p) => `<p class="lead">${esc(p)}</p>`).join('')}</div>`;
     $('#q-historia').innerHTML = historia + (e.fundacion ? `<p class="reveal"><strong>Fundada en ${esc(e.fundacion)}.</strong></p>` : pend('empresa.fundacion'));
     $('#q-mv').innerHTML = parte('mision', 'Misión', 'target') + parte('vision', 'Visión', 'eye');
+    const oe = q.objetivos || [];
+    $('#q-obj').innerHTML = (vacio(q.objetivoGeneral) && !oe.length)
+      ? pend('quienes.objetivoGeneral') + pend('quienes.objetivos')
+      : `<article class="tarjeta tarjeta--plana obj reveal"><div class="obj__general"><h2>Objetivo general</h2>${vacio(q.objetivoGeneral) ? pend('quienes.objetivoGeneral') : `<p>${esc(q.objetivoGeneral)}</p>`}</div><div class="obj__espec"><h2>Objetivos específicos</h2>${oe.length ? `<ul class="lista-chulos">${oe.map((o) => `<li>${esc(o)}</li>`).join('')}</ul>` : pend('quienes.objetivos')}</div></article>`;
     $('#q-social').innerHTML = vacio(q.trabajoSocial)
       ? pend('quienes.trabajoSocial')
       : `<div class="reveal" style="max-width:70ch">${String(q.trabajoSocial).split(/\n+/).map((p) => `<p class="lead">${esc(p)}</p>`).join('')}</div>`;
@@ -418,6 +425,7 @@
       ? `<ul class="lista-chulos">${ce.map((c) => `<li>${esc(typeof c === 'string' ? c : c.nombre)}${c.entidad ? ` — <small>${esc(c.entidad)}</small>` : ''}</li>`).join('')}</ul>`
       : pend('quienes.certificaciones');
     const datosLegales = [];
+    if (l.razonSocial) datosLegales.push(`<li>${icon('building-2')}<div><b>Razón social</b>${esc(l.razonSocial)}</div></li>`);
     if (l.nit) datosLegales.push(`<li>${icon('badge-check')}<div><b>NIT</b>${esc(l.nit)}</div></li>`);
     if (l.representanteLegal) datosLegales.push(`<li>${icon('users')}<div><b>Representante legal</b>${esc(l.representanteLegal)}</div></li>`);
     $('#q-legal').innerHTML = (datosLegales.length ? `<ul class="datos-contacto">${datosLegales.join('')}</ul>` : '')
@@ -430,14 +438,14 @@
       : pend('quienes.normatividad');
     // el público no ve secciones vacías
     const oculta = (id, vacia) => { const el = $(id); if (el && vacia) el.classList.add('solo-admin'); };
-    oculta('#q-sec-mv', vacio(q.mision) && vacio(q.vision));
+    oculta('#q-sec-mv', vacio(q.mision) && vacio(q.vision) && vacio(q.objetivoGeneral) && !oe.length);
     oculta('#q-sec-equipo', !eq.length);
     oculta('#q-sec-norma', !nor.length);
     oculta('#q-col-certs', !ce.length);
-    oculta('#q-col-legal', !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
-    oculta('#q-sec-info', !ce.length && !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
+    oculta('#q-col-legal', !l.razonSocial && !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
+    oculta('#q-sec-info', !ce.length && !l.razonSocial && !l.nit && !l.representanteLegal && !l.politicaDatosUrl);
     // si nada se publicó, mensaje para el público
-    const hayAlgo = ['historia', 'mision', 'vision', 'trabajoSocial'].some((k) => !vacio(q[k])) || eq.length || ce.length || nor.length || l.nit || l.representanteLegal;
+    const hayAlgo = ['historia', 'mision', 'vision', 'objetivoGeneral', 'trabajoSocial'].some((k) => !vacio(q[k])) || oe.length || eq.length || ce.length || nor.length || l.razonSocial || l.nit || l.representanteLegal;
     if (!hayAlgo) $('#q-vacio').innerHTML = vaciaPublica('sprout', 'Estamos preparando esta página con nuestra historia, misión, visión y equipo.');
   };
 

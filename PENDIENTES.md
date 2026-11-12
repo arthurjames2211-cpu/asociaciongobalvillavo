@@ -4,7 +4,7 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 (Entra al sitio con `?admin=1` para ver estos mismos avisos dentro de cada página.)
 
 ## Datos de la empresa
-- [ ] Confirmar el **nombre oficial** (se usó «Asociación Global Villavo», tomado del nombre del proyecto) y la ciudad (se asumió Villavicencio)
+- [ ] Decidir el **nombre que va en el encabezado**: la razón social es «Asociación Global Socio Ambiental Impacto Verde» (ya aparece en Quiénes somos y en el pie), pero el encabezado y el logo usan el nombre corto «Asociación Global Villavo». Confirmar con la asociación si se deja así o se cambia
 - [ ] Año de fundación
 - [ ] Teléfono, **WhatsApp** (con 57), correo, dirección y horario de atención
 - [ ] Mapa / cómo llegar (enlace de inserción de Google Maps o un video corto de cómo llegar). Pista dada en el audio: la bodega queda cerca de la Avenida del Llano, en una esquina, antes de una carpintería, en una bodega grande. Falta la dirección exacta
@@ -21,7 +21,7 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 - [ ] Política de tratamiento de datos personales **revisada por un abogado** (enlace) — el formulario ya pide la autorización (Ley 1581 de 2012)
 
 ## Contenido
-- [ ] Historia, misión y visión
+- [ ] Historia de la asociación (misión, visión y objetivos ya están cargados desde el documento de la asociación; en ese documento los títulos de misión y visión venían intercambiados y se acomodaron según el contenido: confirmar con la asociación)
 - [ ] Trabajo social con los recicladores y sus familias
 - [ ] Equipo (solo con autorización escrita para publicar nombre y foto)
 - [ ] Materiales que se reciben y qué se recolecta

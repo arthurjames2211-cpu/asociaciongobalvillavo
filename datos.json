@@ -19,6 +19,7 @@
     "x": null
   },
   "legal": {
+    "razonSocial": "Asociación Global Socio Ambiental Impacto Verde",
     "nit": null,
     "representanteLegal": null,
     "politicaDatosUrl": null
@@ -31,8 +32,15 @@
   },
   "quienes": {
     "historia": null,
-    "mision": null,
-    "vision": null,
+    "mision": "Contribuir a la protección del medio ambiente mediante la gestión y el aprovechamiento de residuos sólidos, promoviendo la economía circular, el uso eficiente de los recursos y la implementación de prácticas sostenibles en el municipio de Villavicencio, Meta, teniendo como referencia el bienestar y la dignificación del recuperador de oficio.",
+    "vision": "Para el año 2038, la Asociación Global Socio Ambiental Impacto Verde será reconocida en Villavicencio, Meta, como una organización referente en la gestión ambiental y el aprovechamiento de residuos sólidos, destacándose por su compromiso con la sostenibilidad, la eficiencia operativa, la innovación en sus procesos y la promoción de la economía circular.",
+    "objetivoGeneral": "Fortalecer las capacidades operativas, administrativas, organizacionales y comerciales de la Asociación Global Socio Ambiental Impacto Verde, mediante la implementación de estrategias orientadas a la optimización de sus procesos, el mejoramiento continuo de su gestión empresarial, la sostenibilidad organizacional y el bienestar de sus asociados y demás integrantes, contribuyendo al desarrollo de sus actividades de aprovechamiento de residuos sólidos en el municipio de Villavicencio, Meta.",
+    "objetivos": [
+      "Fortalecer la gestión organizacional y administrativa de la asociación.",
+      "Optimizar la productividad mediante la planificación estratégica y el uso eficiente de los recursos.",
+      "Mejorar los procesos operativos relacionados con el aprovechamiento de residuos sólidos.",
+      "Promover el mejoramiento continuo y la calidad del servicio prestado."
+    ],
     "trabajoSocial": null,
     "equipo": [],
     "certificaciones": [],
