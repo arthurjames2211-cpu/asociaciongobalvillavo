@@ -169,7 +169,7 @@ ul, ol { padding-left: 1.2em; }
 .marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--c900); flex: none; min-width: 0; margin-right: auto; }
 .marca img { width: 48px; height: 48px; object-fit: contain; flex: none; }
 .marca__texto { display: grid; line-height: 1.08; min-width: 0; }
-.marca__texto strong { font: 900 1rem var(--f-titulo); letter-spacing: -.01em; max-width: 9.5rem; }
+.marca__texto strong { font: 900 1rem var(--f-titulo); letter-spacing: -.01em; max-width: 9.5rem; text-wrap: balance; }
 .marca__texto small { font: 800 .68rem var(--f-titulo); color: var(--c700); letter-spacing: .1em; text-transform: uppercase; }
 
 .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .05rem; align-items: center; }

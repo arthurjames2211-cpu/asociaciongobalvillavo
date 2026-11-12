@@ -4,7 +4,7 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 (Entra al sitio con `?admin=1` para ver estos mismos avisos dentro de cada página.)
 
 ## Datos de la empresa
-- [ ] Decidir el **nombre que va en el encabezado**: la razón social es «Asociación Global Socio Ambiental Impacto Verde» (ya aparece en Quiénes somos y en el pie), pero el encabezado y el logo usan el nombre corto «Asociación Global Villavo». Confirmar con la asociación si se deja así o se cambia
+- [ ] Nombre: la asociación se llama «Asociación Impacto Verde» (es el que usa el sitio en el encabezado y los títulos). La razón social completa, «Asociación Global Socio Ambiental Impacto Verde», se muestra en Quiénes somos y en el pie. Confirmar con la asociación que así lo quieren y que la ciudad (Villavicencio) es correcta
 - [ ] Año de fundación
 - [ ] Teléfono, **WhatsApp** (con 57), correo, dirección y horario de atención
 - [ ] Mapa / cómo llegar (enlace de inserción de Google Maps o un video corto de cómo llegar). Pista dada en el audio: la bodega queda cerca de la Avenida del Llano, en una esquina, antes de una carpintería, en una bodega grande. Falta la dirección exacta

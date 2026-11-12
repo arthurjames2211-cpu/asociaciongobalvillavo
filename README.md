@@ -1,4 +1,4 @@
-# Sitio web — Asociación Global Villavo
+# Sitio web — Asociación Impacto Verde
 
 Sitio estático (HTML, CSS y JavaScript, sin build) para una asociación de recicladores de Villavicencio.
 Todo el contenido que cambia vive en **un solo archivo: `datos.json`**.
@@ -19,7 +19,7 @@ Inicio · Quiénes somos · Servicios · Cómo reciclar · Rutas y horarios · T
 
 ```json
 "empresa": {
-  "nombre": "Asociación Global Villavo",
+  "nombre": "Asociación Impacto Verde",
   "ciudad": "Villavicencio",
   "fundacion": 2021,
   "telefono": "608 000 0000",
