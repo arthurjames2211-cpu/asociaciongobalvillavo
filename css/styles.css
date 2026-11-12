@@ -426,53 +426,7 @@ body.es-admin .a11y-fab { bottom: 76px; }
   .buscar__pill .btn span.txt { display: none; }
 }
 
-/* ---------- Trámites rápidos ---------- */
-.tramites { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
-.tramite {
-  position: relative; overflow: hidden; display: flex; flex-direction: column; gap: .35rem; text-decoration: none; min-height: 168px;
-  padding: 1.2rem 1.2rem 1.1rem; border-radius: var(--radio); background: var(--c100); color: var(--c900);
-  font: 900 1.12rem/1.15 var(--f-titulo); border: 2px solid transparent;
-  transition: transform .2s ease, box-shadow .2s, border-color .2s;
-}
-.tramite::after { content: ""; position: absolute; right: -34px; bottom: -34px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255, 255, 255, .55); transition: transform .35s ease; }
-.tramite > span:first-child { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: #fff; color: var(--c700); margin-bottom: .6rem; box-shadow: 0 6px 12px -8px rgba(11, 53, 80, .6); }
-.tramite > span:first-child svg { width: 26px; height: 26px; }
-.tramite small { display: block; font: 400 .9rem/1.4 var(--f-texto); color: var(--texto-suave); max-width: 18ch; }
-.tramite .tramite__flecha { position: absolute; right: 14px; bottom: 14px; z-index: 1; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--c900); color: #fff; transition: transform .2s; }
-.tramite .tramite__flecha svg { width: 18px; height: 18px; }
-.tramite:hover { transform: translateY(-5px); box-shadow: var(--sombra-alta); border-color: var(--c700); color: var(--c900); }
-.tramite:hover::after { transform: scale(1.35); }
-.tramite:hover .tramite__flecha { transform: translateX(3px); }
-.tramite--b { background: var(--hoja-100); }
-.tramite--c { background: var(--sol-100); }
-.tramite--d { background: var(--c200); }
-.tramite--principal { background: var(--c700); color: #fff; }
-.tramite--principal > span:first-child { background: var(--sol); color: var(--c900); }
-.tramite--principal small { color: #e3f4fd; }
-.tramite--principal::after { background: rgba(255, 255, 255, .12); }
-.tramite--principal .tramite__flecha { background: #fff; color: var(--c900); }
-.tramite--principal:hover { color: #fff; border-color: var(--c900); background: var(--c800); }
-@media (max-width: 900px) { .tramites { grid-template-columns: repeat(2, 1fr); gap: .8rem; } .tramite { min-height: 156px; justify-content: flex-end; } .tramite > span:first-child { position: absolute; left: 14px; top: 14px; margin: 0; } .tramite .tramite__flecha { top: 14px; bottom: auto; right: 14px; width: 34px; height: 34px; } }
-@media (max-width: 420px) { .tramite { min-height: 138px; padding: 1rem; font-size: 1rem; } .tramite small { display: none; } }
-
-/* ---------- Proceso: el ciclo ---------- */
-.escena {
-  background: radial-gradient(500px 260px at 50% 40%, #fff, rgba(255, 255, 255, 0)), linear-gradient(180deg, var(--c50), var(--c100));
-  border: 1px solid var(--c200); border-radius: 34px; box-shadow: var(--sombra); padding: clamp(.4rem, 2vw, 1.2rem);
-}
-.escena svg { display: block; width: 100%; height: auto; }
-.escena .ciclo--alto { display: none; max-width: 420px; margin-inline: auto; }
-@media (max-width: 719px) { .escena .ciclo--ancho { display: none; } .escena .ciclo--alto { display: block; } }
-.escena text { font-family: var(--f-titulo); font-weight: 900; fill: var(--c900); }
-.escena .t-sub { font-weight: 700; fill: var(--c800); }
-.escena .t-num { fill: var(--c900); font-size: 14px; }
-.pista { stroke-dasharray: 3 12; stroke-linecap: round; animation: pista 1.6s linear infinite; }
-@keyframes pista { to { stroke-dashoffset: -30; } }
-.estacion { transform-box: fill-box; transform-origin: center; animation: late-estacion 6s ease-in-out infinite; }
-.estacion:nth-of-type(2) { animation-delay: -1.5s; }
-.estacion:nth-of-type(3) { animation-delay: -3s; }
-.estacion:nth-of-type(4) { animation-delay: -4.5s; }
-@keyframes late-estacion { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+/* ---------- Pasos ---------- */
 .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1rem; margin: 1.4rem 0 0; padding: 0; list-style: none; counter-reset: paso; }
 .pasos li { counter-increment: paso; position: relative; background: #fff; border-radius: var(--radio-s); padding: 1.1rem 1.1rem 1.15rem 1.2rem; border: 1px solid var(--c200); box-shadow: var(--sombra); border-top: 6px solid var(--c500); }
 .pasos li:nth-child(2) { border-top-color: var(--hoja); }
@@ -578,7 +532,7 @@ body.es-admin { padding-bottom: 64px; }
 .lista-equis li::before { background-color: #b4442b; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E"); }
 
 /* información regulada (transparencia) */
-.info-bloques { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.1rem; }
+.info-bloques { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 1.1rem; }
 .info-bloque { display: flex; flex-direction: column; gap: .3rem; }
 .info-bloque h3 { margin: 0; font-size: 1.1rem; }
 .info-bloque p { margin: 0; font-size: .96rem; color: var(--texto-suave); }
@@ -733,20 +687,17 @@ html.alto-contraste {
   --sombra: 0 0 0 2px #000; --sombra-alta: 0 0 0 3px #000;
 }
 html.alto-contraste body { background-image: none; }
-html.alto-contraste .tarjeta, html.alto-contraste .buscar, html.alto-contraste .pasos li, html.alto-contraste .grafica, html.alto-contraste .tabla-caja, html.alto-contraste .escena, html.alto-contraste .cab__pill, html.alto-contraste .tramite, html.alto-contraste .social-banda, html.alto-contraste .resultado-ruta { border: 2px solid #000; }
+html.alto-contraste .tarjeta, html.alto-contraste .buscar, html.alto-contraste .pasos li, html.alto-contraste .grafica, html.alto-contraste .tabla-caja, html.alto-contraste .cab__pill, html.alto-contraste .social-banda, html.alto-contraste .resultado-ruta { border: 2px solid #000; }
 html.alto-contraste .portada-pagina, html.alto-contraste .heroe { background: #fff; border-bottom: 3px solid #000; }
 html.alto-contraste .portada-pagina::before, html.alto-contraste .heroe::before { display: none; }
 html.alto-contraste .ola { display: none; }
 html.alto-contraste .heroe__sol, html.alto-contraste .heroe__anillo, html.alto-contraste .burbuja { display: none; }
 html.alto-contraste a { text-decoration: underline; }
-html.alto-contraste .btn, html.alto-contraste .tramite, html.alto-contraste .nav a, html.alto-contraste .redes a, html.alto-contraste .avatares a, html.alto-contraste .marca, html.alto-contraste .wa-flota, html.alto-contraste .chip-material, html.alto-contraste .indice a, html.alto-contraste .hoja-menu ol li a { text-decoration: none; }
+html.alto-contraste .btn, html.alto-contraste .nav a, html.alto-contraste .redes a, html.alto-contraste .avatares a, html.alto-contraste .marca, html.alto-contraste .wa-flota, html.alto-contraste .chip-material, html.alto-contraste .indice a, html.alto-contraste .hoja-menu ol li a { text-decoration: none; }
 html.alto-contraste .seccion--cielo { background: #f1f1f1; }
-html.alto-contraste .tramite--principal { background: #004a80; }
-html.alto-contraste .tramite::after { display: none; }
 html.alto-contraste .cta-final { background: #00203a; }
 html.alto-contraste .pie { background: #000; }
 html.alto-contraste .pie::before { display: none; }
-html.alto-contraste .escena text { fill: #000; }
 html.alto-contraste .barra span.rel { background: #004a80; }
 html.alto-contraste .hoja-menu { background: #000; }
 

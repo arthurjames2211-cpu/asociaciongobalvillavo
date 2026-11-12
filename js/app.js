@@ -38,6 +38,11 @@
     ['contacto', 'Contacto', 'contacto.html'],
   ];
 
+  /* Versión pequeña: Toneladas y Noticias solo aparecen en el menú cuando ya hay datos
+     (o si estás viendo esa página, o en modo administrador). */
+  const OPCIONALES = { toneladas: () => !vacio(D.toneladas), noticias: () => !vacio(D.noticias) };
+  const paginasVisibles = (actual) => PAGINAS.filter(([id]) => !OPCIONALES[id] || OPCIONALES[id]() || id === actual || document.body.classList.contains('es-admin'));
+
   /* Lista de todo lo que puede faltar. Sirve para los recuadros y para la lista de pendientes. */
   const CAMPOS = {
     'empresa.fundacion': ['Año de fundación', 'Cifras del inicio y Quiénes somos'],
@@ -139,8 +144,8 @@
   function renderCabecera(pagina) {
     const e = D.empresa || {};
     const wa = waLink(msgBase());
-    const nav = PAGINAS.map(([id, txt, href, corto]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${corto || txt}</a></li>`).join('');
-    const hoja = PAGINAS.map(([id, txt, href]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${txt}</a></li>`).join('');
+    const nav = paginasVisibles(pagina).map(([id, txt, href, corto]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${corto || txt}</a></li>`).join('');
+    const hoja = paginasVisibles(pagina).map(([id, txt, href]) => `<li><a href="${href}"${id === pagina ? ' aria-current="page"' : ''}>${txt}</a></li>`).join('');
     const botonWa = wa
       ? `<a class="btn btn--wa btn--chico cabecera__wa cab__wa" href="${esc(wa)}" target="_blank" rel="noopener">${brand('whatsapp', '#fff')}<span>WhatsApp</span></a>`
       : `<span class="pend-chip cabecera__wa cab__wa">Falta WhatsApp</span>`;
@@ -243,7 +248,7 @@
             </div>
             <div>
               <h2>Páginas</h2>
-              <ul>${PAGINAS.map(([id, t, h]) => `<li><a href="${h}">${t}</a></li>`).join('')}</ul>
+              <ul>${paginasVisibles(pagina).map(([id, t, h]) => `<li><a href="${h}">${t}</a></li>`).join('')}</ul>
             </div>
             <div>
               <h2>Contacto</h2>
@@ -716,7 +721,6 @@
     // título con el nombre de la empresa
     const h1 = $('h1'); if (h1 && pagina !== 'inicio') document.title = `${h1.textContent.trim()} · ${nombre()}`;
     observarReveal();
-    if (sinMovimiento) $$('.escena svg').forEach((sv) => { try { sv.pauseAnimations(); } catch (e) { /* sin SMIL */ } });
     $$('.reveal').forEach((el, i) => { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', ((i % 4) * 0.07) + 's'); });
   }
 

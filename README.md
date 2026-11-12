@@ -98,8 +98,12 @@ Enlace «Saltar al contenido», botón flotante de accesibilidad (tamaño del te
 
 - Colores: bloque `:root` al inicio de `css/styles.css`. Azul cielo (`--c500`, `--c600`) como color de marca, verde hoja y amarillo sol como acentos.
 - Fuentes: Nunito (títulos) y Atkinson Hyperlegible Next (texto, pensada para leer fácil), incluidas en `fonts/`.
-- **Logo:** `img/logo.png` (720 px, fondo transparente) se usa en la portada y en la escena del ciclo; `img/logo-sm.png` (192 px) en el encabezado y el pie. Si cambias el logo, reemplaza esos dos archivos y genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp). Si tienes el logo original en alta resolución (PNG transparente, 1500 px o más), úsalo: el actual se recortó de una captura de baja resolución.
+- **Logo:** `img/logo.png` (720 px, fondo transparente) se usa en la portada; `img/logo-sm.png` (192 px) en el encabezado y el pie. Si cambias el logo, reemplaza esos dos archivos y genera de nuevo `img/favicon-32.png` (32 px), `img/apple-touch-icon.png` (180 px) e `img/og-image.jpg` (1200 × 630 px, la imagen que sale al compartir el enlace en WhatsApp). Si tienes el logo original en alta resolución (PNG transparente, 1500 px o más), úsalo: el actual se recortó de una captura de baja resolución.
 - **WordPress:** más adelante la asociación pasará las noticias (y quizá todo el sitio) a WordPress. Este sitio está pensado para esa migración: el contenido está separado en `datos.json`.
+
+## Versión pequeña
+
+La asociación es pequeña (pocos afiliados y pocas rutas), así que el sitio se mantiene básico: el menú solo muestra **Toneladas** y **Noticias** cuando ya hay datos en `datos.json` (en modo administrador, `?admin=1`, siempre se ven). El inicio es corto: portada, buscador de barrio, cómo funciona, guía de materiales y llamado a pedir recolección. La escena animada del ciclo y los mosaicos de trámites se quitaron para simplificar; están en el historial de Git (commit «Rediseño Cielo») por si se quieren recuperar.
 
 ## Información regulada (Servicios y Quiénes somos)
 
