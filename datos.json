@@ -9,7 +9,8 @@
     "correo": null,
     "direccion": null,
     "horario": null,
-    "mapaUrl": null
+    "mapaUrl": null,
+    "recicladores": 49
   },
   "redes": {
     "facebook": null,
@@ -20,14 +21,23 @@
   },
   "legal": {
     "razonSocial": "Asociación Global Socio Ambiental Impacto Verde",
-    "nit": null,
+    "nit": "901.398.850-0",
     "representanteLegal": null,
     "politicaDatosUrl": null
   },
   "inicio": {
     "titular": null,
     "subtitulo": null,
-    "galeria": [],
+    "galeria": [
+      {
+        "src": "img/galeria/bodega-1.jpg",
+        "alt": "Recicladora de Impacto Verde con su carro de recolección en la bodega"
+      },
+      {
+        "src": "img/galeria/bodega-2.jpg",
+        "alt": "Recicladora de Impacto Verde junto al carro con el aviso de la asociación"
+      }
+    ],
     "video": null
   },
   "quienes": {
@@ -56,7 +66,91 @@
     "bodega": null
   },
   "mostrarTelefonosRecicladores": false,
-  "zonas": [],
+  "zonas": [
+    {
+      "nombre": "Centro",
+      "barrios": [
+        "Centro",
+        "Santa Inés",
+        "Santa Fe",
+        "Villa Julia",
+        "San Isidro",
+        "Barzal",
+        "San José",
+        "Terminal",
+        "Sector del Hospital"
+      ],
+      "dias": "Lunes a sábado (algunas rutas también el domingo)",
+      "horario": "5:00 a. m. a 3:00 p. m."
+    },
+    {
+      "nombre": "Siete de Agosto, Jordán y El Buque",
+      "barrios": [
+        "Siete de Agosto",
+        "Jordán",
+        "El Buque",
+        "El Trapiche",
+        "Villa María",
+        "Villa Codem",
+        "Villa Suárez",
+        "Barzal"
+      ],
+      "dias": "Lunes a domingo, según el barrio",
+      "horario": "5:30 a. m. a 10:00 p. m. (mañana y tarde)"
+    },
+    {
+      "nombre": "La Esperanza, Caritama y Maracos",
+      "barrios": [
+        "La Esperanza",
+        "Caritama",
+        "Bochica",
+        "Maracos",
+        "Morelia",
+        "Aeropuerto",
+        "Vanguardia",
+        "Anillo Vial",
+        "La Alborada",
+        "Restrepo",
+        "El Brillante"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "4:00 a. m. a 12:00 m."
+    },
+    {
+      "nombre": "El Estero, Porvenir y Popular",
+      "barrios": [
+        "El Estero",
+        "Porvenir",
+        "Popular",
+        "Vizcaya",
+        "La Ceiba",
+        "Alcalá"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "6:00 a. m. a 5:00 p. m. (una ruta de 6:00 a 10:00 p. m.)"
+    },
+    {
+      "nombre": "Galán, Chapinero y La Grama",
+      "barrios": [
+        "Galán",
+        "Chapinero",
+        "La Grama",
+        "Vanguardia",
+        "Centro"
+      ],
+      "dias": "Lunes a domingo",
+      "horario": "5:00 a. m. a 12:00 m. y 5:00 p. m. a 11:00 p. m."
+    },
+    {
+      "nombre": "La Porfía y vía a Pipiral",
+      "barrios": [
+        "La Porfía",
+        "Antiguo peaje de Pipiral"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "5:00 a. m. a 1:00 p. m."
+    }
+  ],
   "toneladas": [],
   "noticias": []
 }

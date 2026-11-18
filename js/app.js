@@ -361,6 +361,7 @@
     const cifras = [];
     const e = D.empresa || {};
     if (e.fundacion) cifras.push({ n: e.fundacion, t: 'Año de fundación', sep: false });
+    if (e.recicladores) cifras.push({ n: e.recicladores, t: 'Recicladores asociados' });
     if ((D.zonas || []).length) cifras.push({ n: D.zonas.length, t: 'Zonas atendidas' });
     const total = (D.toneladas || []).reduce((s, r) => s + (Number(r.aprovechadas) || 0), 0);
     if (total > 0) cifras.push({ n: total, t: 'Toneladas aprovechadas', dec: total % 1 ? 1 : 0 });
@@ -378,7 +379,7 @@
     const gcaja = $('#galeria');
     let g = '';
     if (gal.length) {
-      const n = Math.min(gal.length, 8); const cols = n % 4 === 0 ? 4 : 3;
+      const n = Math.min(gal.length, 8); const cols = n < 3 ? n : (n % 4 === 0 ? 4 : 3);
       g += `<div class="galeria" style="--cols:${cols}">${gal.slice(0, 8).map((f, i) => `<button type="button" class="reveal" style="--d:${(i % 4) * .06}s" data-foto="${esc(f.src)}" data-alt="${esc(f.alt || '')}" aria-label="Ampliar foto: ${esc(f.alt || 'galería')}"><img src="${esc(f.src)}" alt="${esc(f.alt || '')}" loading="lazy" width="480" height="360"></button>`).join('')}</div>`;
     }
     if (gal.length < 6) g += pend('inicio.galeria', gal.length ? `hay ${gal.length}, faltan ${6 - gal.length}` : '');

@@ -40,3 +40,10 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 ## Configuración
 - [ ] Correo que recibirá los mensajes del formulario (Netlify → Forms → Form notifications)
 - [ ] Dominio propio (opcional)
+
+## Rutas cargadas desde la base de datos de recicladores (nov 2026)
+- [ ] Confirmar la agrupación en 6 zonas y los nombres de barrio que venían con errores de digitación: "Vialla Coden" → Villa Codem, "Alcalad" → Alcalá, "Seiva" → La Ceiba, "Sotea" y "Parque de Acha" (no publicados, falta saber cuáles son).
+- [ ] La base no trae código de macroruta ni microruta: si la asociación los tiene, se agregan.
+- [ ] 49 recicladores en la base; varios sin vehículo, barrios u horario (filas 7, 8, 12, 18, 20–22, 27, 29, 35–38, 41, 49).
+- [ ] Datos personales (cédula, dirección, celular, RH, EPS, Sisbén) NO se publican.
+- [ ] Número de WhatsApp completo (en el carro sale 322 768 7…).
