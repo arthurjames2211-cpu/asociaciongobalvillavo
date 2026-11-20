@@ -633,8 +633,10 @@
       btn.disabled = true; btn.querySelector('span').textContent = 'Enviando…';
       try {
         const body = new URLSearchParams(new FormData(form)).toString();
-        const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        const enNetlify = /netlify\.app$/.test(location.hostname);
+        const r = await fetch(enNetlify ? '/' : 'contacto.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
         if (!r.ok) throw new Error('HTTP ' + r.status);
+        if (!enNetlify) { const j = await r.json().catch(() => ({})); if (!j.ok) throw new Error('no guardado'); }
         form.reset(); mostrarAviso('ok');
       } catch (e) { mostrarAviso('mal'); }
       btn.disabled = false; btn.querySelector('span').textContent = txt;
