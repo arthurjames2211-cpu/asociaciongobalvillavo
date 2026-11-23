@@ -462,7 +462,7 @@ body.es-admin .a11y-fab { bottom: 76px; }
 .visor::backdrop { background: rgba(7, 37, 58, .9); }
 .visor img { max-height: 86vh; border-radius: 18px; display: block; margin: auto; }
 .visor button { position: absolute; top: 8px; right: 8px; min-width: 44px; min-height: 44px; border-radius: 50%; border: 0; background: #fff; color: var(--c900); font: 900 1.2rem var(--f-titulo); cursor: pointer; }
-.video-vertical { width: min(100%, 340px); aspect-ratio: 9 / 16; border-radius: 28px; background: #000; box-shadow: var(--sombra-alta); display: block; margin-inline: auto; }
+.video-vertical { width: min(100%, 340px); aspect-ratio: 9 / 16; height: auto; object-fit: cover; border-radius: 28px; background: #000; box-shadow: var(--sombra-alta); display: block; margin-inline: auto; }
 
 /* ---------- Trabajo social (inicio) ---------- */
 .social-banda { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: center; background: linear-gradient(135deg, var(--sol-100), #fff 70%); border: 1px solid #f5dd9d; border-radius: 34px; padding: clamp(1.3rem, 3vw, 2.2rem); box-shadow: var(--sombra); }
@@ -896,6 +896,8 @@ html.alto-contraste .heroe__marco { border-color: #000; }
 .momento figcaption { position: absolute; inset: auto 0 0 0; padding: 3.2rem 1.1rem 1rem; color: #fff; font-size: .95rem; background: linear-gradient(180deg, transparent, rgba(11, 53, 80, .88)); }
 .momento figcaption b { display: block; font-family: var(--f-titulo); font-size: 1.12rem; margin-bottom: .15rem; }
 @media (max-width: 760px) { .momentos { grid-template-columns: 1fr 1fr; } .momento:last-child { grid-column: span 2; aspect-ratio: 16 / 10; } }
+.video-bloque { display: grid; grid-template-columns: 1fr minmax(260px, 340px); gap: clamp(1.6rem, 5vw, 4rem); align-items: center; }
+@media (max-width: 760px) { .video-bloque { grid-template-columns: 1fr; } .video-bloque .video-vertical { max-width: 340px; margin-inline: auto; } }
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

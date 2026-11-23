@@ -1,0 +1,23 @@
+# Asociación Impacto Verde
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  # Páginas, datos, estilos y código: el navegador siempre pregunta si hay versión nueva
+  <FilesMatch "\.(html|json|css|js|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Imágenes, fuentes y videos: se guardan 1 día
+  <FilesMatch "\.(png|jpe?g|webp|svg|woff2|mp4)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+<IfModule LiteSpeed>
+  CacheLookup off
+</IfModule>

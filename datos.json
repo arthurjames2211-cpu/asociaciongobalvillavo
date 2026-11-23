@@ -65,8 +65,8 @@
       }
     ],
     "video": {
-      "src": "video/tour.mp4",
-      "poster": "img/fotos/tour-portada.jpg",
+      "src": "video/tour-v2.mp4",
+      "poster": "img/fotos/tour-v2-portada.jpg",
       "titulo": "Tour en video por la Asociación Impacto Verde"
     }
   },
