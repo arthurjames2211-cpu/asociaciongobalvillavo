@@ -47,3 +47,10 @@ Nada de esto se inventó: está vacío en `datos.json` hasta que la asociación 
 - [ ] 49 recicladores en la base; varios sin vehículo, barrios u horario (filas 7, 8, 12, 18, 20–22, 27, 29, 35–38, 41, 49).
 - [ ] Datos personales (cédula, dirección, celular, RH, EPS, Sisbén) NO se publican.
 - [ ] Número de WhatsApp completo (en el carro sale 322 768 7…).
+
+## Portafolio 2026 integrado (nov 2026)
+- [ ] Confirmar cuál número tiene WhatsApp: se usó 311 525 3957 (también 320 864 2309; en el carro aparece 322 768 7…).
+- [ ] Enlace exacto de la página de Facebook "Impacto Verde" (no venía en el portafolio).
+- [ ] Horario de atención de la bodega.
+- [ ] Las fotos del portafolio PDF tienen filtro tipo caricatura: no se usaron. Se usaron las fotos y videos reales de la carpeta.
+- [ ] Autorización de las personas que salen en las fotos y el video para publicarlas (Ley 1581).

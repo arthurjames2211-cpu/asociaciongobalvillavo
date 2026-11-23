@@ -229,6 +229,7 @@
     const e = D.empresa || {}; const l = D.legal || {};
     const contacto = [];
     if (e.telefono) contacto.push(`<li>${icon('phone')} <a href="tel:${esc(String(e.telefono).replace(/[^\d+]/g, ''))}">${esc(e.telefono)}</a></li>`);
+    if (e.telefono2) contacto.push(`<li>${icon('phone')} <a href="tel:${esc(String(e.telefono2).replace(/[^\d+]/g, ''))}">${esc(e.telefono2)}</a></li>`);
     if (e.correo) contacto.push(`<li>${icon('mail')} <a href="mailto:${esc(e.correo)}">${esc(e.correo)}</a></li>`);
     if (e.direccion) contacto.push(`<li>${icon('map-pin')} ${esc(e.direccion)}${e.ciudad ? ', ' + esc(e.ciudad) : ''}</li>`);
     if (e.horario) contacto.push(`<li>${icon('clock')} ${esc(e.horario)}</li>`);
@@ -573,6 +574,7 @@
     if (wa) items.push(it('message-circle', 'WhatsApp', `<a href="${esc(wa)}" target="_blank" rel="noopener">${esc(e.whatsappVisible || 'Escríbenos por WhatsApp')}</a>`));
     else items.push(`<li>${pend('empresa.whatsapp')}</li>`);
     items.push(e.telefono ? it('phone', 'Teléfono', `<a href="tel:${esc(String(e.telefono).replace(/[^\d+]/g, ''))}">${esc(e.telefono)}</a>`) : `<li>${pend('empresa.telefono')}</li>`);
+    if (e.telefono2 && String(e.telefono2).replace(/\D/g, '') !== String(e.whatsapp || '').replace(/\D/g, '').slice(-10)) items.push(it('phone', 'Otro teléfono', `<a href="tel:${esc(String(e.telefono2).replace(/[^\d+]/g, ''))}">${esc(e.telefono2)}</a>`));
     items.push(e.correo ? it('mail', 'Correo', `<a href="mailto:${esc(e.correo)}">${esc(e.correo)}</a>`) : `<li>${pend('empresa.correo')}</li>`);
     items.push(e.direccion ? it('map-pin', 'Dirección', `${esc(e.direccion)}${e.ciudad ? ', ' + esc(e.ciudad) : ''}`) : `<li>${pend('empresa.direccion')}</li>`);
     items.push(e.horario ? it('clock', 'Horario', esc(e.horario)) : `<li>${pend('empresa.horario')}</li>`);
@@ -745,6 +747,8 @@
     observarReveal();
     $$('.reveal').forEach((el, i) => { if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', ((i % 4) * 0.07) + 's'); });
     $$('.chips-material').forEach((c) => $$('.chip-material', c).forEach((el, i) => el.style.setProperty('--n', i)));
+    $$('.etapas').forEach((c) => $$('.etapa', c).forEach((el, i) => el.style.setProperty('--n', i)));
+    $$('.heroe__video').forEach((v) => { if (sinMovimiento) { v.removeAttribute('autoplay'); v.pause(); } });
     efectosScroll();
   }
 

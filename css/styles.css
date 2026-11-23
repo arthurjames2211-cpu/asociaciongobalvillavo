@@ -798,12 +798,104 @@ html.alto-contraste .hoja-menu { background: #000; }
 html.alto-contraste .progreso { background: #ffd400; }
 html.alto-contraste .hoja-vuela, html.alto-contraste .heroe::before { display: none; }
 
+
+/* ---------- Contenido del portafolio: hero con video, nosotros, etapas, fotos ---------- */
+.heroe__media { position: relative; display: grid; place-items: center; padding: 1.5rem 0 2.6rem; }
+.heroe__media .heroe__sol { width: min(108%, 520px); top: 50%; left: 50%; translate: -50% -50%; }
+.heroe__marco {
+  position: relative; width: min(100%, 380px); aspect-ratio: 2 / 3; overflow: hidden;
+  border-radius: 190px 190px var(--radio) var(--radio);
+  border: 6px solid #fff; box-shadow: var(--sombra-alta), 0 0 0 1px rgba(14, 106, 166, .12);
+  background: var(--c200) url("../img/fotos/fachada-mural.webp") center / cover;
+  animation: marco-entra 1s cubic-bezier(.2, .7, .2, 1) .2s both;
+}
+.heroe__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.heroe__sello {
+  position: absolute; width: 96px; height: 96px; left: max(0px, calc(50% - 240px)); bottom: 3.2rem;
+  background: #fff; border-radius: 50%; padding: 6px; box-shadow: var(--sombra-alta);
+  animation: logo-entra 1s cubic-bezier(.2, .8, .25, 1.15) .7s both, flotar 7s ease-in-out 1.8s infinite;
+}
+.heroe__pie {
+  position: absolute; bottom: .6rem; left: 50%; translate: -50% 0; margin: 0; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: .4rem; padding: .5rem 1rem; border-radius: 999px;
+  background: var(--c900); color: #fff !important; font-size: .9rem !important; font-weight: 700; box-shadow: var(--sombra);
+  animation: subir .7s cubic-bezier(.2, .7, .2, 1) 1s both;
+}
+.heroe__pie svg { width: 16px; height: 16px; color: var(--sol); }
+@keyframes marco-entra { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: none; } }
+@media (max-width: 860px) {
+  .heroe__media { order: 2; padding: 1.4rem 0 2.4rem; }
+  .heroe__marco { width: min(78%, 300px); border-radius: 150px 150px 22px 22px; }
+  .heroe__media .heroe__sol { width: min(96%, 360px); }
+  .heroe__sello { width: 74px; height: 74px; left: 4%; bottom: 3rem; }
+}
+
+.foto { margin: 0; }
+.foto img { width: 100%; height: auto; display: block; border-radius: var(--radio); box-shadow: var(--sombra-alta); }
+.foto figcaption { margin-top: .7rem; font-size: .92rem; color: var(--c700); }
+.foto--grande { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+.foto--fachada { margin-top: 1.6rem; }
+.foto--fachada img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; }
+
+.nos-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center; }
+.nos-txt h2 { margin-top: .4rem; }
+.nos-txt .btn { margin-top: .6rem; }
+@media (max-width: 860px) { .nos-grid { grid-template-columns: 1fr; } }
+
+@media (min-width: 700px) { .galeria button:first-child:nth-last-child(5) { grid-column: span 2; aspect-ratio: auto; } }
+
+/* Etapas: una línea que une las 7 estaciones del material */
+.etapas { list-style: none; margin: clamp(1.6rem, 4vw, 2.6rem) 0 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(7, 1fr); gap: 1rem; counter-reset: etapa; }
+.etapas::before {
+  content: ""; position: absolute; left: 7%; right: 7%; top: 34px; height: 4px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--hoja), var(--c500) 60%, var(--sol));
+  transform-origin: 0 50%; transform: scaleX(var(--avance, 1)); transition: transform 1.6s cubic-bezier(.2, .7, .2, 1);
+}
+.con-js .etapas:not(.visto) { --avance: 0; }
+.etapa { position: relative; text-align: center; counter-increment: etapa; }
+.etapa__ico {
+  position: relative; z-index: 1; display: grid; place-items: center; width: 72px; height: 72px; margin: 0 auto .8rem; border-radius: 50%;
+  background: #fff; color: var(--c700); border: 3px solid var(--c300); box-shadow: var(--sombra);
+  transition: transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.etapa__ico svg { width: 30px; height: 30px; }
+.etapa__ico::after {
+  content: counter(etapa); position: absolute; top: -6px; right: -6px; width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--sol); color: var(--c900); font: 800 .8rem/1 var(--f-titulo); border: 2px solid #fff;
+}
+.etapa:hover .etapa__ico { transform: translateY(-4px); background: var(--c600); color: #fff; border-color: var(--c600); }
+.etapa h3 { font-size: 1.02rem; margin: 0 0 .3rem; }
+.etapa p { font-size: .9rem; color: var(--c800); margin: 0; }
+.con-js .etapas:not(.visto) .etapa { opacity: 0; }
+.etapas.visto .etapa { animation: pop-chip .6s cubic-bezier(.2, .8, .25, 1.2) calc(var(--n, 0) * 140ms + .15s) backwards; }
+@media (max-width: 980px) {
+  .etapas { grid-template-columns: 1fr; gap: 0; max-width: 560px; }
+  .etapas::before { left: 34px; right: auto; top: 20px; bottom: 20px; width: 4px; height: auto; transform-origin: 50% 0; transform: scaleY(var(--avance, 1)); background: linear-gradient(180deg, var(--hoja), var(--c500) 60%, var(--sol)); }
+  .etapa { display: grid; grid-template-columns: 72px 1fr; column-gap: 1rem; text-align: left; padding: .6rem 0; }
+  .etapa__ico { grid-row: span 2; margin: 0; }
+  .etapa h3 { align-self: end; margin: .4rem 0 .15rem; }
+}
+
+.extras { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: clamp(2rem, 5vw, 3.4rem); }
+.extra { display: grid; grid-template-columns: 42% 1fr; background: var(--papel); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); border: 1px solid rgba(42, 167, 230, .16); }
+.extra__foto { margin: 0; overflow: hidden; }
+.extra__foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.extra:hover .extra__foto img { transform: scale(1.05); }
+.extra__txt { padding: 1.4rem 1.4rem 1.5rem; }
+.extra__txt h3 { margin: .8rem 0 .4rem; }
+.extra__txt p { margin: 0; color: var(--c800); }
+@media (max-width: 980px) { .extras { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .extra { grid-template-columns: 1fr; } .extra__foto img { aspect-ratio: 16 / 10; height: auto; } }
+
+html.alto-contraste .heroe__marco { border-color: #000; }
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
   .con-js .reveal { opacity: 1; transform: none; }
   .hoja-vuela, .btn::after, .cta-final::before, .cta-final::after { display: none; }
+  .con-js .etapas:not(.visto) .etapa { opacity: 1; }
+  .con-js .etapas:not(.visto) { --avance: 1; }
   .con-js .chips-material:not(.visto) .chip-material { opacity: 1; }
   .progreso { transition: none; }
 }
