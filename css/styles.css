@@ -888,6 +888,14 @@ html.alto-contraste .hoja-vuela, html.alto-contraste .heroe::before { display: n
 @media (max-width: 560px) { .extra { grid-template-columns: 1fr; } .extra__foto img { aspect-ratio: 16 / 10; height: auto; } }
 
 html.alto-contraste .heroe__marco { border-color: #000; }
+
+.momentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+.momento { position: relative; margin: 0; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); aspect-ratio: 4 / 5; background: var(--c200); }
+.momento img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.momento:hover img { transform: scale(1.05); }
+.momento figcaption { position: absolute; inset: auto 0 0 0; padding: 3.2rem 1.1rem 1rem; color: #fff; font-size: .95rem; background: linear-gradient(180deg, transparent, rgba(11, 53, 80, .88)); }
+.momento figcaption b { display: block; font-family: var(--f-titulo); font-size: 1.12rem; margin-bottom: .15rem; }
+@media (max-width: 760px) { .momentos { grid-template-columns: 1fr 1fr; } .momento:last-child { grid-column: span 2; aspect-ratio: 16 / 10; } }
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

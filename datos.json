@@ -36,23 +36,39 @@
         "alt": "Recicladores y familias de la Asociación Impacto Verde reunidos en Villavicencio"
       },
       {
+        "src": "img/fotos/recolector-carro.webp",
+        "alt": "Reciclador de la asociación con su carro de recolección en el barrio"
+      },
+      {
+        "src": "img/fotos/pesaje.webp",
+        "alt": "Pesaje del material en la báscula de la bodega"
+      },
+      {
         "src": "img/fotos/equipo-bodega.webp",
         "alt": "Equipo de Impacto Verde en la bodega, junto a pacas de cartón"
       },
       {
-        "src": "img/fotos/fachada-letrero.webp",
-        "alt": "Fachada de la bodega con el aviso de la asociación y el mural de Impacto Verde"
+        "src": "img/fotos/bodega-interior.webp",
+        "alt": "Material clasificado en lonas dentro de la bodega"
       },
       {
         "src": "img/fotos/pacas-carton.webp",
         "alt": "Pacas de cartón compactado listas para comercializar"
       },
       {
-        "src": "img/galeria/bodega-1.jpg",
-        "alt": "Recicladora de Impacto Verde con su carro de recolección en la bodega"
+        "src": "img/fotos/jornada.webp",
+        "alt": "Jornada de la asociación con familias al aire libre"
+      },
+      {
+        "src": "img/fotos/fachada-letrero.webp",
+        "alt": "Fachada de la bodega con el aviso y el mural de Impacto Verde"
       }
     ],
-    "video": null
+    "video": {
+      "src": "video/tour.mp4",
+      "poster": "img/fotos/tour-portada.jpg",
+      "titulo": "Tour en video por la Asociación Impacto Verde"
+    }
   },
   "quienes": {
     "historia": "Somos la Asociación Impacto Verde de Villavicencio, Meta, comprometida con dignificar y fortalecer la labor de los recicladores de oficio.\nTrabajamos por el reconocimiento de su esfuerzo, generando oportunidades que mejoren su calidad de vida y la de sus familias, mientras contribuimos al cuidado del medio ambiente y a la construcción de una ciudad más sostenible.",
