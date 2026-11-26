@@ -130,3 +130,14 @@ Todas usan solo `transform`/`opacity` y se apagan con "reducir movimiento" del s
 - Entre páginas hay un fundido suave (navegadores que lo soportan).
 
 Para quitar alguna: borra su regla en ese bloque; no depende de nada más. Las hojas del hero se quitan eliminando los `<span class="hoja-vuela">` de `index.html` (o de `/tmp/scripts/gen.py` si se regenera).
+
+## Versión WordPress (tema `wordpress/impacto-verde`)
+
+La web completa también existe como tema de WordPress, con el mismo diseño.
+
+- **Instalar:** Apariencia → Temas → Añadir → Subir tema → `wordpress/impacto-verde.zip` → Activar. Al activarlo crea solo las páginas (Inicio, Quiénes somos, Servicios, Cómo reciclar, Rutas y horarios, Toneladas, Noticias, Contacto), deja el Inicio como portada y activa los enlaces bonitos (`/servicios/`).
+- **Noticias:** en el menú lateral, **Noticias → Añadir noticia**: título, texto, "Foto de la noticia" y **Publicar**. Salen solas en /noticias/ y en el inicio.
+- **Datos de contacto y título del inicio:** Apariencia → Personalizar → **Datos de la asociación**.
+- **Mensajes del formulario:** menú **Mensajes** (también llegan al correo de la asociación).
+- Las direcciones viejas (`servicios.html`) redirigen a las nuevas.
+- Para regenerar el tema después de cambiar el sitio estático: `python3 /tmp/scripts/build_theme.py` (copia css/js/img/video/datos y convierte cada página en plantilla PHP).

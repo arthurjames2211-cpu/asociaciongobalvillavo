@@ -1,0 +1,212 @@
+{
+  "empresa": {
+    "nombre": "Asociación Impacto Verde",
+    "ciudad": "Villavicencio, Meta",
+    "lema": "Asociación de recicladores de oficio de Villavicencio",
+    "fundacion": null,
+    "telefono": "320 864 2309",
+    "whatsapp": "573115253957",
+    "correo": "asociacionglobalvillavo@gmail.com",
+    "direccion": "Calle 37C # 22-46/58, barrio Industrial",
+    "horario": null,
+    "mapaUrl": "https://maps.google.com/maps?q=Calle%2037C%20%2322-46%2C%20Barrio%20Industrial%2C%20Villavicencio%2C%20Meta&z=16&output=embed",
+    "recicladores": 49,
+    "telefono2": "311 525 3957",
+    "whatsappVisible": "311 525 3957"
+  },
+  "redes": {
+    "facebook": null,
+    "instagram": "https://www.instagram.com/impacto_verde_villavicencio/",
+    "tiktok": null,
+    "youtube": null,
+    "x": null
+  },
+  "legal": {
+    "razonSocial": "Asociación Global Socio Ambiental Impacto Verde",
+    "nit": "901.398.850-0",
+    "representanteLegal": null,
+    "politicaDatosUrl": null
+  },
+  "inicio": {
+    "titular": null,
+    "subtitulo": null,
+    "galeria": [
+      {
+        "src": "img/fotos/grupo-asociacion.webp",
+        "alt": "Recicladores y familias de la Asociación Impacto Verde reunidos en Villavicencio"
+      },
+      {
+        "src": "img/fotos/recolector-carro.webp",
+        "alt": "Reciclador de la asociación con su carro de recolección en el barrio"
+      },
+      {
+        "src": "img/fotos/pesaje.webp",
+        "alt": "Pesaje del material en la báscula de la bodega"
+      },
+      {
+        "src": "img/fotos/equipo-bodega.webp",
+        "alt": "Equipo de Impacto Verde en la bodega, junto a pacas de cartón"
+      },
+      {
+        "src": "img/fotos/bodega-interior.webp",
+        "alt": "Material clasificado en lonas dentro de la bodega"
+      },
+      {
+        "src": "img/fotos/pacas-carton.webp",
+        "alt": "Pacas de cartón compactado listas para comercializar"
+      },
+      {
+        "src": "img/fotos/jornada.webp",
+        "alt": "Jornada de la asociación con familias al aire libre"
+      },
+      {
+        "src": "img/fotos/fachada-letrero.webp",
+        "alt": "Fachada de la bodega con el aviso y el mural de Impacto Verde"
+      }
+    ],
+    "video": {
+      "src": "video/tour-v2.mp4",
+      "poster": "img/fotos/tour-v2-portada.jpg",
+      "titulo": "Tour en video por la Asociación Impacto Verde"
+    }
+  },
+  "quienes": {
+    "historia": "Somos la Asociación Impacto Verde de Villavicencio, Meta, comprometida con dignificar y fortalecer la labor de los recicladores de oficio.\nTrabajamos por el reconocimiento de su esfuerzo, generando oportunidades que mejoren su calidad de vida y la de sus familias, mientras contribuimos al cuidado del medio ambiente y a la construcción de una ciudad más sostenible.",
+    "mision": "Contribuir a la protección del medio ambiente mediante la gestión y el aprovechamiento de residuos sólidos, promoviendo la economía circular, el uso eficiente de los recursos y la implementación de prácticas sostenibles en el municipio de Villavicencio, Meta, teniendo como referencia el bienestar y la dignificación del recuperador de oficio.",
+    "vision": "Para el año 2038, la Asociación Global Socio Ambiental Impacto Verde será reconocida en Villavicencio, Meta, como una organización referente en la gestión ambiental y el aprovechamiento de residuos sólidos, destacándose por su compromiso con la sostenibilidad, la eficiencia operativa, la innovación en sus procesos y la promoción de la economía circular.",
+    "objetivoGeneral": "Fortalecer las capacidades operativas, administrativas, organizacionales y comerciales de la Asociación Global Socio Ambiental Impacto Verde, mediante la implementación de estrategias orientadas a la optimización de sus procesos, el mejoramiento continuo de su gestión empresarial, la sostenibilidad organizacional y el bienestar de sus asociados y demás integrantes, contribuyendo al desarrollo de sus actividades de aprovechamiento de residuos sólidos en el municipio de Villavicencio, Meta.",
+    "objetivos": [
+      "Fortalecer la gestión organizacional y administrativa de la asociación.",
+      "Optimizar la productividad mediante la planificación estratégica y el uso eficiente de los recursos.",
+      "Mejorar los procesos operativos relacionados con el aprovechamiento de residuos sólidos.",
+      "Promover el mejoramiento continuo y la calidad del servicio prestado."
+    ],
+    "trabajoSocial": null,
+    "equipo": [],
+    "certificaciones": [],
+    "normatividad": []
+  },
+  "servicios": {
+    "reciben": [
+      "Cartón",
+      "Archivo y papel de oficina",
+      "PET (botellas plásticas)",
+      "Pasta y plástico rígido",
+      "Chatarra y hierro",
+      "Aluminio",
+      "Cobre y bronce"
+    ],
+    "recolectan": [
+      "Material aprovechable separado en la fuente",
+      "Hogares de los barrios de nuestras rutas",
+      "Comercios, oficinas y conjuntos residenciales",
+      "También compramos material reciclable en nuestra bodega"
+    ],
+    "comoPedir": [
+      {
+        "titulo": "Escríbenos o llámanos",
+        "texto": "Por WhatsApp al 311 525 3957, al 320 864 2309 o desde el formulario."
+      },
+      {
+        "titulo": "Cuéntanos qué tienes",
+        "texto": "Tu barrio, el tipo de material y la cantidad aproximada."
+      },
+      {
+        "titulo": "Coordinamos la recolección",
+        "texto": "Te confirmamos el día, o puedes traer el material a la bodega del barrio Industrial."
+      }
+    ],
+    "tarifa": null,
+    "certificados": "Emitimos certificaciones de aprovechamiento de materiales, respaldando las cantidades recuperadas y gestionadas, como soporte de la adecuada disposición y de tu contribución a la sostenibilidad ambiental. Pídela por WhatsApp o desde el formulario de contacto.",
+    "contratoUrl": null,
+    "bodega": "Nuestra bodega queda en la Calle 37C # 22-46/58, barrio Industrial, Villavicencio. Allí pesamos, clasificamos, compactamos y almacenamos el material antes de comercializarlo, y también compramos material reciclable."
+  },
+  "mostrarTelefonosRecicladores": false,
+  "zonas": [
+    {
+      "nombre": "Centro",
+      "barrios": [
+        "Centro",
+        "Santa Inés",
+        "Santa Fe",
+        "Villa Julia",
+        "San Isidro",
+        "Barzal",
+        "San José",
+        "Terminal",
+        "Sector del Hospital"
+      ],
+      "dias": "Lunes a sábado (algunas rutas también el domingo)",
+      "horario": "5:00 a. m. a 3:00 p. m."
+    },
+    {
+      "nombre": "Siete de Agosto, Jordán y El Buque",
+      "barrios": [
+        "Siete de Agosto",
+        "Jordán",
+        "El Buque",
+        "El Trapiche",
+        "Villa María",
+        "Villa Codem",
+        "Villa Suárez",
+        "Barzal"
+      ],
+      "dias": "Lunes a domingo, según el barrio",
+      "horario": "5:30 a. m. a 10:00 p. m. (mañana y tarde)"
+    },
+    {
+      "nombre": "La Esperanza, Caritama y Maracos",
+      "barrios": [
+        "La Esperanza",
+        "Caritama",
+        "Bochica",
+        "Maracos",
+        "Morelia",
+        "Aeropuerto",
+        "Vanguardia",
+        "Anillo Vial",
+        "La Alborada",
+        "Restrepo",
+        "El Brillante"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "4:00 a. m. a 12:00 m."
+    },
+    {
+      "nombre": "El Estero, Porvenir y Popular",
+      "barrios": [
+        "El Estero",
+        "Porvenir",
+        "Popular",
+        "Vizcaya",
+        "La Ceiba",
+        "Alcalá"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "6:00 a. m. a 5:00 p. m. (una ruta de 6:00 a 10:00 p. m.)"
+    },
+    {
+      "nombre": "Galán, Chapinero y La Grama",
+      "barrios": [
+        "Galán",
+        "Chapinero",
+        "La Grama",
+        "Vanguardia",
+        "Centro"
+      ],
+      "dias": "Lunes a domingo",
+      "horario": "5:00 a. m. a 12:00 m. y 5:00 p. m. a 11:00 p. m."
+    },
+    {
+      "nombre": "La Porfía y vía a Pipiral",
+      "barrios": [
+        "La Porfía",
+        "Antiguo peaje de Pipiral"
+      ],
+      "dias": "Lunes a sábado",
+      "horario": "5:00 a. m. a 1:00 p. m."
+    }
+  ],
+  "toneladas": [],
+  "noticias": []
+}

@@ -1,0 +1,17 @@
+/* Ajustes para el contenido escrito en WordPress (noticias y páginas) */
+.texto-wp, .noticia-completa__foto { max-width: 760px; }
+.noticia-completa__foto img { aspect-ratio: auto; max-height: 520px; object-fit: cover; }
+.texto-wp { font-size: 1.08rem; line-height: 1.75; color: var(--c900); }
+.texto-wp > * + * { margin-top: 1em; }
+.texto-wp h2, .texto-wp h3 { margin-top: 1.6em; }
+.texto-wp img { max-width: 100%; height: auto; border-radius: var(--radio); }
+.texto-wp figure { margin: 1.4em 0; }
+.texto-wp figcaption { font-size: .92rem; color: var(--c700); margin-top: .5em; }
+.texto-wp a { color: var(--c700); text-decoration: underline; text-underline-offset: 3px; }
+.texto-wp blockquote { border-left: 4px solid var(--hoja); padding-left: 1rem; font-style: italic; }
+.texto-wp .wp-block-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .8rem; }
+.noticia-completa__volver { margin-top: 2.4rem; }
+.enlace-flecha { display: inline-flex; align-items: center; gap: .35rem; margin-top: .6rem; font-weight: 700; color: var(--c700); }
+.enlace-flecha svg { width: 18px; height: 18px; transition: transform .2s ease; }
+.enlace-flecha:hover svg { transform: translateX(3px); }
+.screen-reader-text { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); }

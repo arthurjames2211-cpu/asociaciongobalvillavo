@@ -27,15 +27,24 @@
     return `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="${fill || b.hex}" d="${b.path}"/></svg>`;
   };
 
+  // En WordPress (window.IV_CFG) las páginas y archivos tienen otras direcciones
+  const CFG = window.IV_CFG || null;
+  const url = (p) => {
+    if (!CFG) return p;
+    const m = /^([a-z0-9-]+)\.html(.*)$/.exec(p);
+    if (m) return (CFG.rutas[m[1]] || CFG.base) + m[2];
+    if (/^(img|video|fonts)\//.test(p)) return CFG.tema + p;
+    return p;
+  };
   const PAGINAS = [
-    ['inicio', 'Inicio', 'index.html'],
-    ['quienes', 'Quiénes somos', 'quienes-somos.html'],
-    ['servicios', 'Servicios', 'servicios.html'],
-    ['reciclar', 'Cómo reciclar', 'como-reciclar.html'],
-    ['rutas', 'Rutas y horarios', 'rutas-y-horarios.html'],
-    ['toneladas', 'Toneladas aprovechadas', 'toneladas.html', 'Toneladas'],
-    ['noticias', 'Noticias', 'noticias.html'],
-    ['contacto', 'Contacto', 'contacto.html'],
+    ['inicio', 'Inicio', url('index.html')],
+    ['quienes', 'Quiénes somos', url('quienes-somos.html')],
+    ['servicios', 'Servicios', url('servicios.html')],
+    ['reciclar', 'Cómo reciclar', url('como-reciclar.html')],
+    ['rutas', 'Rutas y horarios', url('rutas-y-horarios.html')],
+    ['toneladas', 'Toneladas aprovechadas', url('toneladas.html'), 'Toneladas'],
+    ['noticias', 'Noticias', url('noticias.html')],
+    ['contacto', 'Contacto', url('contacto.html')],
   ];
 
   /* Versión pequeña: Toneladas y Noticias solo aparecen en el menú cuando ya hay datos
@@ -158,8 +167,8 @@
     const cab = `
       <header class="cab" id="cabecera">
         <div class="cab__pill">
-          <a class="marca" href="index.html" aria-label="${esc(nombre())}, ir al inicio">
-            <img src="img/logo-sm.png?v=20261123" width="48" height="48" alt="">
+          <a class="marca" href="${url('index.html')}" aria-label="${esc(nombre())}, ir al inicio">
+            <img src="${url('img/logo-sm.png')}?v=20261123" width="48" height="48" alt="">
             <span class="marca__texto"><strong>${esc(nombre())}</strong>${e.ciudad ? `<small>${esc(e.ciudad)}</small>` : ''}</span>
           </a>
           <nav class="nav" id="menu-principal" aria-label="Principal"><ul>${nav}</ul></nav>
@@ -244,7 +253,7 @@
         <div class="contenedor">
           <div class="pie__grid">
             <div>
-              <div class="pie__marca"><img src="img/logo-sm.png?v=20261123" width="66" height="66" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
+              <div class="pie__marca"><img src="${url('img/logo-sm.png')}?v=20261123" width="66" height="66" alt="" loading="lazy"><strong>${esc(nombre())}</strong></div>
               <p>${e.lema ? esc(e.lema) : 'Reciclaje que cuida el ambiente y a las personas que lo hacen posible.'}</p>
             </div>
             <div>
@@ -253,7 +262,7 @@
             </div>
             <div>
               <h2>Contacto</h2>
-              ${contacto.length ? `<ul class="pie-contacto">${contacto.join('')}</ul>` : `<p><a href="contacto.html">Escríbenos desde el formulario de contacto</a></p>`}
+              ${contacto.length ? `<ul class="pie-contacto">${contacto.join('')}</ul>` : `<p><a href="${url('contacto.html')}">Escríbenos desde el formulario de contacto</a></p>`}
               ${pendContacto}
             </div>
             <div${redes ? '' : ' class="solo-admin"'}>
@@ -284,11 +293,11 @@
     const wa = waLink(msgRecoleccion());
     $$('[data-wa-recoleccion]').forEach((a) => {
       if (wa) { a.href = wa; a.target = '_blank'; a.rel = 'noopener'; }
-      else { a.href = 'contacto.html?asunto=solicitud#formulario'; }
+      else { a.href = url('contacto.html') + '?asunto=solicitud#formulario'; }
     });
     $$('[data-wa-general]').forEach((a) => {
       const w = waLink(msgBase());
-      if (w) { a.href = w; a.target = '_blank'; a.rel = 'noopener'; } else { a.href = 'contacto.html#formulario'; }
+      if (w) { a.href = w; a.target = '_blank'; a.rel = 'noopener'; } else { a.href = url('contacto.html') + '#formulario'; }
     });
   }
 
@@ -314,7 +323,7 @@
         <time datetime="${esc(n.fecha)}">${esc(fechaLarga(n.fecha))}</time>
         <h3>${esc(n.titulo)}</h3>
         <p>${esc(n.resumen || '')}</p>
-        ${parrafos ? `<details><summary>Leer la noticia completa</summary>${parrafos}</details>` : ''}
+        ${n.url ? `<a class="enlace-flecha" href="${esc(n.url)}">Leer la noticia completa ${icon('arrow-right')}</a>` : (parrafos ? `<details><summary>Leer la noticia completa</summary>${parrafos}</details>` : '')}
       </div></article>`;
   }
   const noticiasOrdenadas = () => (D.noticias || []).slice().sort((a, b) => String(b.fecha).localeCompare(String(a.fecha)));
@@ -336,14 +345,14 @@
     const buscar = () => {
       const q = (campo.value || '').trim().toLowerCase();
       if (!zonas.length) {
-        res.innerHTML = `<div class="resultado-ruta">Todavía no hay rutas publicadas. <a href="contacto.html#formulario">Escríbenos tu barrio</a> y te contamos si llegamos.</div>` + pend('zonas');
+        res.innerHTML = `<div class="resultado-ruta">Todavía no hay rutas publicadas. <a href="${url('contacto.html')}#formulario">Escríbenos tu barrio</a> y te contamos si llegamos.</div>` + pend('zonas');
         return;
       }
       if (!q) { res.innerHTML = ''; return; }
       const hit = zonas.filter((z) => [z.nombre].concat(z.barrios || []).some((x) => String(x).toLowerCase().includes(q)));
       res.innerHTML = hit.length
-        ? hit.map((z) => `<div class="resultado-ruta"><strong>${esc(z.nombre)}</strong><br>${z.dias ? 'Días: ' + esc(z.dias) : ''}${z.horario ? ' · Horario: ' + esc(z.horario) : ''}<br><a href="rutas-y-horarios.html?zona=${encodeURIComponent(z.nombre)}">Ver la ruta completa</a></div>`).join('')
-        : `<div class="resultado-ruta">No encontramos «${esc(campo.value)}» en las rutas publicadas. <a href="contacto.html#formulario">Escríbenos tu barrio</a>.</div>`;
+        ? hit.map((z) => `<div class="resultado-ruta"><strong>${esc(z.nombre)}</strong><br>${z.dias ? 'Días: ' + esc(z.dias) : ''}${z.horario ? ' · Horario: ' + esc(z.horario) : ''}<br><a href="${url('rutas-y-horarios.html')}?zona=${encodeURIComponent(z.nombre)}">Ver la ruta completa</a></div>`).join('')
+        : `<div class="resultado-ruta">No encontramos «${esc(campo.value)}» en las rutas publicadas. <a href="${url('contacto.html')}#formulario">Escríbenos tu barrio</a>.</div>`;
     };
     $('#form-buscar').addEventListener('submit', (ev) => { ev.preventDefault(); buscar(); });
     campo.addEventListener('input', () => { if (zonas.length) buscar(); });
@@ -354,7 +363,7 @@
     const sc = $('#social-caja');
     if (!vacio(ts)) {
       const primero = String(ts).split(/\n+/)[0];
-      sc.innerHTML = `<div class="social-banda reveal"><div class="icono-caja">${icon('hand-heart')}</div><div><span class="etiqueta">Más que reciclaje</span><h2>Cuidamos a quienes reciclan</h2><p>${esc(primero)}</p><a class="btn btn--borde btn--chico" href="quienes-somos.html#trabajo-social">Conoce nuestro trabajo social ${icon('arrow-right')}</a></div></div>`;
+      sc.innerHTML = `<div class="social-banda reveal"><div class="icono-caja">${icon('hand-heart')}</div><div><span class="etiqueta">Más que reciclaje</span><h2>Cuidamos a quienes reciclan</h2><p>${esc(primero)}</p><a class="btn btn--borde btn--chico" href="${url('quienes-somos.html')}#trabajo-social">Conoce nuestro trabajo social ${icon('arrow-right')}</a></div></div>`;
     } else { $('#sec-social').classList.add('solo-admin'); sc.innerHTML = pend('quienes.trabajoSocial', 'aparecerá aquí en el inicio'); }
 
     // Cifras
@@ -474,7 +483,7 @@
     info += vacio(s.certificados) ? pend('servicios.certificados') : bloque('file-check', 'Certificados de aprovechamiento', parr(s.certificados));
     info += vacio(s.contratoUrl) ? pend('servicios.contratoUrl') : bloque('scroll-text', 'Contrato de condiciones uniformes', `<p>Consulta las condiciones del servicio.</p><a class="enlace" href="${esc(s.contratoUrl)}" target="_blank" rel="noopener">Abrir el documento</a>`);
     info += vacio(s.bodega) ? pend('servicios.bodega') : bloque('warehouse', 'Estación de clasificación y aprovechamiento', parr(s.bodega));
-    info += bloque('megaphone', 'Peticiones, quejas, reclamos y sugerencias', `<p>Cuéntanos qué pasó o qué podemos mejorar. Respondemos por el medio que elijas.</p><a class="enlace" href="contacto.html?asunto=peticion#formulario">Presentar una PQRS</a>`);
+    info += bloque('megaphone', 'Peticiones, quejas, reclamos y sugerencias', `<p>Cuéntanos qué pasó o qué podemos mejorar. Respondemos por el medio que elijas.</p><a class="enlace" href="${url('contacto.html')}?asunto=peticion#formulario">Presentar una PQRS</a>`);
     $('#s-info').innerHTML = info;
     const ocultaS = (id, vacia) => { const el = $(id); if (el && vacia) el.classList.add('solo-admin'); };
     ocultaS('#s-card-reciben', vacio(s.reciben)); ocultaS('#s-card-recolectan', vacio(s.recolectan));
@@ -636,7 +645,7 @@
       try {
         const body = new URLSearchParams(new FormData(form)).toString();
         const enNetlify = /netlify\.app$/.test(location.hostname);
-        const r = await fetch(enNetlify ? '/' : 'contacto.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        const r = await fetch(CFG ? CFG.contacto : (enNetlify ? '/' : 'contacto.php'), { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
         if (!r.ok) throw new Error('HTTP ' + r.status);
         if (!enNetlify) { const j = await r.json().catch(() => ({})); if (!j.ok) throw new Error('no guardado'); }
         form.reset(); mostrarAviso('ok');
@@ -700,7 +709,7 @@
   /* ---------- Arranque ---------- */
   async function cargarDatos() {
     try {
-      const r = await fetch('datos.json', { cache: 'no-cache' });
+      const r = await fetch(CFG ? CFG.datos : 'datos.json', { cache: 'no-cache' });
       if (!r.ok) throw new Error(r.status);
       return await r.json();
     } catch (e) {

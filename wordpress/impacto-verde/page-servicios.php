@@ -1,0 +1,49 @@
+<?php get_header( null, array( 'pagina' => 'servicios' ) ); ?>
+<main id="contenido">
+<section class="portada-pagina">
+  <div class="contenedor">
+    <p class="migas"><a href="<?php echo esc_url( iv_url( 'index' ) ); ?>">Inicio</a> / Servicios</p>
+    <h1>Servicios</h1>
+    <p>Recolección, transporte, pesaje, clasificación, compactación, almacenamiento y comercialización de material aprovechable.</p>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="o1" d="M0,52 C180,12 360,92 600,56 C840,20 1040,82 1240,44 C1330,28 1390,36 1440,46 L1440,100 L0,100 Z"/><path class="o2" d="M0,70 C220,34 420,100 700,66 C960,36 1200,92 1440,58 L1440,100 L0,100 Z"/></svg>
+</section><section class="seccion" id="etapas"><div class="contenedor"><div class="seccion__cab reveal"><span class="etiqueta">Lo que hacemos</span><h2>Gestión integral del material aprovechable</h2><p class="lead">Del momento en que separas hasta que el material vuelve a la industria: así lo cuidamos en cada paso, para que se aproveche y aporte a la economía circular.</p></div><ol class="etapas reveal" aria-label="Etapas del servicio"><li class="etapa"><span class="etapa__ico" data-icon="hand-heart"></span><h3>Recolección</h3><p>Recogemos el material separado en hogares, comercios y oficinas.</p></li><li class="etapa"><span class="etapa__ico" data-icon="truck"></span><h3>Transporte</h3><p>Lo llevamos hasta nuestra bodega del barrio Industrial.</p></li><li class="etapa"><span class="etapa__ico" data-icon="scale"></span><h3>Pesaje</h3><p>Pesamos cada entrega en báscula y la dejamos registrada.</p></li><li class="etapa"><span class="etapa__ico" data-icon="recycle"></span><h3>Clasificación</h3><p>Separamos por tipo: cartón, papel, plásticos y metales.</p></li><li class="etapa"><span class="etapa__ico" data-icon="box"></span><h3>Compactación</h3><p>Prensamos el material en pacas para aprovechar el espacio.</p></li><li class="etapa"><span class="etapa__ico" data-icon="warehouse"></span><h3>Almacenamiento</h3><p>Lo guardamos ordenado y protegido hasta su venta.</p></li><li class="etapa"><span class="etapa__ico" data-icon="handshake"></span><h3>Comercialización</h3><p>Lo entregamos a la industria, que lo vuelve a producir.</p></li></ol><div class="momentos">
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/recolector-carro.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Reciclador de Impacto Verde empujando su carro de recolección por una calle del barrio"><figcaption><b>Recolección</b> Recorremos los barrios con nuestros carros.</figcaption></figure>
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/pesaje.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Integrante de la asociación pesando una bolsa de material en la báscula de la bodega"><figcaption><b>Pesaje</b> Cada entrega se pesa y se registra.</figcaption></figure>
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/bodega-interior.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Interior de la bodega con lonas de material clasificado"><figcaption><b>Clasificación y almacenamiento</b> El material espera ordenado su salida.</figcaption></figure>
+    </div><div class="extras">
+      <article class="extra reveal"><figure class="extra__foto"><img src="<?php echo esc_url( IV_URI . 'img/fotos/jornada.webp' ); ?>" width="1600" height="900" loading="lazy" alt="Jornada de la asociación con familias y recicladores compartiendo al aire libre"></figure>
+        <div class="extra__txt"><span class="icono-caja" data-icon="megaphone"></span><h3>Sensibilización a usuarios</h3><p>Brindamos capacitaciones y jornadas de sensibilización ambiental para promover la correcta separación en la fuente, fortalecer la cultura del reciclaje y el aprovechamiento responsable de los materiales.</p></div></article>
+      <article class="extra reveal"><figure class="extra__foto"><img src="<?php echo esc_url( IV_URI . 'img/fotos/pacas-carton.webp' ); ?>" width="900" height="1125" loading="lazy" alt="Pacas de cartón compactado en la bodega"></figure>
+        <div class="extra__txt"><span class="icono-caja" data-icon="file-check"></span><h3>Certificación de aprovechamiento</h3><p>Emitimos certificaciones que respaldan las cantidades de material recuperadas y gestionadas, como soporte de su adecuada disposición y de tu aporte a la sostenibilidad.</p></div></article>
+    </div></div></section>
+<section class="seccion seccion--cielo">
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Materiales</span><h2>Qué recibimos y qué recolectamos</h2></div>
+    <div id="s-vacio"></div>
+    <div class="rejilla rejilla--2" id="s-rejilla">
+      <article class="tarjeta reveal" id="s-card-reciben"><div class="icono-caja" data-icon="package"></div><h2>Qué recibimos</h2><div id="s-reciben"></div></article>
+      <article class="tarjeta reveal" id="s-card-recolectan"><div class="icono-caja" data-icon="truck"></div><h2>Qué recolectamos</h2><div id="s-recolectan"></div></article>
+    </div>
+  </div>
+</section>
+<section class="seccion">
+  <div class="contenedor">
+    <div id="s-como-bloque"><div class="seccion__cab reveal"><span class="etiqueta">Paso a paso</span><h2>Cómo pedir el servicio</h2></div>
+    <div id="s-como"></div></div>
+    <div id="s-tarifa" style="margin-top:1.6rem"></div>
+    <div class="heroe__acciones" style="margin-top:1.8rem">
+      <a class="btn btn--grande" href="<?php echo esc_url( iv_url( 'contacto' ) ); ?>?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span> Pedir una recolección</a>
+      <a class="btn btn--borde btn--grande" href="<?php echo esc_url( iv_url( 'rutas-y-horarios' ) ); ?>">Ver rutas y horarios</a>
+    </div>
+  </div>
+</section>
+<section class="seccion" id="s-sec-info">
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Atención al usuario</span><h2>Trámites y sugerencias</h2><p class="lead">Si algo no salió bien o quieres proponernos algo, cuéntanoslo.</p></div>
+    <div class="info-bloques" id="s-info"></div>
+  </div>
+</section>
+
+</main>
+<?php get_footer(); ?>

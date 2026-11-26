@@ -1,0 +1,153 @@
+<?php get_header( null, array( 'pagina' => 'inicio' ) ); ?>
+<main id="contenido">
+
+<section class="heroe">
+  <div class="contenedor heroe__grid">
+    <div>
+      <span class="etiqueta" data-bind="empresa.ciudad">Reciclaje en tu ciudad</span>
+      <h1 data-bind="inicio.titular">Reciclamos con dignidad y cuidamos Villavicencio</h1>
+      <p data-bind="inicio.subtitulo">Somos recicladores de oficio organizados. Recogemos, pesamos, clasificamos y llevamos tu material de vuelta a la industria. Consulta tu ruta o pide una recolección.</p>
+      <div class="heroe__acciones">
+        <a class="btn btn--grande" href="<?php echo esc_url( iv_url( 'rutas-y-horarios' ) ); ?>"><span data-icon="map-pin"></span> Consulta tu ruta</a>
+        <a class="btn btn--borde btn--grande" href="<?php echo esc_url( iv_url( 'contacto' ) ); ?>?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span> Pide una recolección</a>
+      </div>
+    </div>
+    <div class="heroe__media">
+      <div class="heroe__sol" aria-hidden="true"></div>
+      <div class="heroe__marco">
+        <video class="heroe__video" autoplay muted loop playsinline preload="metadata" poster="<?php echo esc_url( IV_URI . 'img/fotos/fachada-mural.webp' ); ?>" width="720" height="1080" aria-hidden="true"><source src="<?php echo esc_url( IV_URI . 'video/fachada.mp4' ); ?>" type="video/mp4"></video>
+      </div>
+      <img class="heroe__sello" src="<?php echo esc_url( IV_URI . 'img/logo-sm.png?v=20261123' ); ?>" width="200" height="200" alt="">
+      <p class="heroe__pie"><span data-icon="map-pin"></span> Nuestra bodega en el barrio Industrial</p>
+    </div>
+  </div>
+  <span class="hoja-vuela" aria-hidden="true"></span><span class="hoja-vuela hoja-vuela--2" aria-hidden="true"></span><span class="hoja-vuela" aria-hidden="true"></span><span class="hoja-vuela hoja-vuela--2" aria-hidden="true"></span><span class="hoja-vuela" aria-hidden="true"></span>
+  <svg class="ola" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="o1" d="M0,52 C180,12 360,92 600,56 C840,20 1040,82 1240,44 C1330,28 1390,36 1440,46 L1440,100 L0,100 Z"/><path class="o2" d="M0,70 C220,34 420,100 700,66 C960,36 1200,92 1440,58 L1440,100 L0,100 Z"/></svg>
+</section>
+
+<div class="buscar-banda">
+  <div class="contenedor">
+    <div class="buscar reveal">
+      <div class="buscar__texto">
+        <h2>¿Pasa la ruta por tu barrio?</h2>
+        <p>Escribe tu barrio o zona y mira el día y la hora.</p>
+      </div>
+      <form class="buscar__form" id="form-buscar" role="search" novalidate>
+        <label for="buscar-zona" class="solo-lectores">Busca tu barrio o zona</label>
+        <div class="buscar__pill">
+          <span data-icon="map-pin"></span>
+          <input id="buscar-zona" type="search" list="lista-zonas" placeholder="Escribe tu barrio o zona" autocomplete="off" enterkeyhint="search">
+          <button class="btn btn--chico" type="submit" aria-label="Ver mi ruta"><span data-icon="search"></span><span class="txt">Ver mi ruta</span></button>
+        </div>
+        <datalist id="lista-zonas"></datalist>
+      </form>
+      <div class="buscar__extra">
+        <div class="chips-zona" id="chips-zona"></div>
+        <div class="buscador__res" id="buscar-res" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="seccion" id="nosotros">
+  <div class="contenedor nos-grid">
+    <figure class="foto reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/grupo-celebra.webp' ); ?>" width="1600" height="900" loading="lazy" alt="Recicladores de Impacto Verde y sus familias celebrando juntos en Villavicencio"><figcaption>Recicladores y familias de la asociación, noviembre de 2026.</figcaption></figure>
+    <div class="nos-txt reveal">
+      <span class="etiqueta">Nosotros</span>
+      <h2>Recicladores de oficio, organizados</h2>
+      <p class="lead">Somos la Asociación Impacto Verde de Villavicencio, Meta. Trabajamos para dignificar y fortalecer la labor de los recicladores de oficio.</p>
+      <p>Buscamos que su esfuerzo se reconozca y que haya oportunidades que mejoren su calidad de vida y la de sus familias, mientras cuidamos el ambiente y construimos una ciudad más sostenible.</p>
+      <a class="btn btn--borde" href="<?php echo esc_url( iv_url( 'quienes-somos' ) ); ?>">Conoce la asociación <span data-icon="arrow-right"></span></a>
+    </div>
+  </div>
+</section>
+<section class="seccion seccion--cielo" id="etapas"><div class="contenedor"><div class="seccion__cab reveal"><span class="etiqueta">Lo que hacemos</span><h2>Gestión integral del material aprovechable</h2><p class="lead">Del momento en que separas hasta que el material vuelve a la industria: así lo cuidamos en cada paso, para que se aproveche y aporte a la economía circular.</p></div><ol class="etapas reveal" aria-label="Etapas del servicio"><li class="etapa"><span class="etapa__ico" data-icon="hand-heart"></span><h3>Recolección</h3><p>Recogemos el material separado en hogares, comercios y oficinas.</p></li><li class="etapa"><span class="etapa__ico" data-icon="truck"></span><h3>Transporte</h3><p>Lo llevamos hasta nuestra bodega del barrio Industrial.</p></li><li class="etapa"><span class="etapa__ico" data-icon="scale"></span><h3>Pesaje</h3><p>Pesamos cada entrega en báscula y la dejamos registrada.</p></li><li class="etapa"><span class="etapa__ico" data-icon="recycle"></span><h3>Clasificación</h3><p>Separamos por tipo: cartón, papel, plásticos y metales.</p></li><li class="etapa"><span class="etapa__ico" data-icon="box"></span><h3>Compactación</h3><p>Prensamos el material en pacas para aprovechar el espacio.</p></li><li class="etapa"><span class="etapa__ico" data-icon="warehouse"></span><h3>Almacenamiento</h3><p>Lo guardamos ordenado y protegido hasta su venta.</p></li><li class="etapa"><span class="etapa__ico" data-icon="handshake"></span><h3>Comercialización</h3><p>Lo entregamos a la industria, que lo vuelve a producir.</p></li></ol><div class="momentos">
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/recolector-carro.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Reciclador de Impacto Verde empujando su carro de recolección por una calle del barrio"><figcaption><b>Recolección</b> Recorremos los barrios con nuestros carros.</figcaption></figure>
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/pesaje.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Integrante de la asociación pesando una bolsa de material en la báscula de la bodega"><figcaption><b>Pesaje</b> Cada entrega se pesa y se registra.</figcaption></figure>
+      <figure class="momento reveal"><img src="<?php echo esc_url( IV_URI . 'img/fotos/bodega-interior.webp' ); ?>" width="1000" height="1250" loading="lazy" alt="Interior de la bodega con lonas de material clasificado"><figcaption><b>Clasificación y almacenamiento</b> El material espera ordenado su salida.</figcaption></figure>
+    </div><div class="extras">
+      <article class="extra reveal"><figure class="extra__foto"><img src="<?php echo esc_url( IV_URI . 'img/fotos/jornada.webp' ); ?>" width="1600" height="900" loading="lazy" alt="Jornada de la asociación con familias y recicladores compartiendo al aire libre"></figure>
+        <div class="extra__txt"><span class="icono-caja" data-icon="megaphone"></span><h3>Sensibilización a usuarios</h3><p>Brindamos capacitaciones y jornadas de sensibilización ambiental para promover la correcta separación en la fuente, fortalecer la cultura del reciclaje y el aprovechamiento responsable de los materiales.</p></div></article>
+      <article class="extra reveal"><figure class="extra__foto"><img src="<?php echo esc_url( IV_URI . 'img/fotos/pacas-carton.webp' ); ?>" width="900" height="1125" loading="lazy" alt="Pacas de cartón compactado en la bodega"></figure>
+        <div class="extra__txt"><span class="icono-caja" data-icon="file-check"></span><h3>Certificación de aprovechamiento</h3><p>Emitimos certificaciones que respaldan las cantidades de material recuperadas y gestionadas, como soporte de su adecuada disposición y de tu aporte a la sostenibilidad.</p></div></article>
+    </div></div></section>
+<section class="seccion" id="proceso">
+  <div class="contenedor">
+    <div class="seccion__cab reveal">
+      <span class="etiqueta">Cómo participar</span>
+      <h2>Tu parte es separar</h2>
+      <p class="lead">Separas en casa y nosotros nos encargamos del resto.</p>
+    </div>
+    <ol class="pasos">
+  <li class="reveal"><h3>Separa en casa</h3><p>Pon en una bolsa aparte lo que se puede reciclar. Limpio y seco rinde más.</p></li>
+  <li class="reveal"><h3>Recolectamos</h3><p>Un reciclador de la asociación pasa por tu ruta y recoge el material.</p></li>
+  <li class="reveal"><h3>Clasificamos en bodega</h3><p>El material se separa por tipo, se pesa y se alista para entregarlo.</p></li>
+  <li class="reveal"><h3>Llega a la industria</h3><p>La industria lo transforma en nuevos productos y el ciclo vuelve a empezar.</p></li>
+</ol>
+  </div>
+</section>
+
+<section class="seccion seccion--cielo" id="material">
+  <div class="contenedor">
+    <div class="seccion__cab reveal">
+      <span class="etiqueta">Guía rápida</span>
+      <h2>¿Qué puedes separar?</h2>
+      <p class="lead">Toca un material para ver qué sí y qué no se recicla.</p>
+    </div>
+    <div class="chips-material reveal">
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#aluminio"><span data-icon="cup-soda"></span>Aluminio</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#chatarra"><span data-icon="wrench"></span>Chatarra</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#pet"><span data-icon="recycle"></span>PET</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#papel"><span data-icon="file-text"></span>Papel</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#bolsas"><span data-icon="shopping-bag"></span>Bolsas</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#vidrio"><span data-icon="wine"></span>Vidrio</a>
+      <a class="chip-material" href="<?php echo esc_url( iv_url( 'como-reciclar' ) ); ?>#carton"><span data-icon="box"></span>Cartón</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="sec-cifras" hidden>
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Nuestros números</span><h2>Lo que hemos logrado</h2></div>
+    <div id="cifras"></div>
+  </div>
+</section>
+
+<section class="seccion" id="sec-social" style="padding-top:0">
+  <div class="contenedor"><div id="social-caja"></div></div>
+</section>
+
+<section class="seccion seccion--cielo" id="sec-galeria" hidden>
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">En acción</span><h2>Así trabajamos</h2><p class="lead">Fotos de nuestra bodega, las calles y la gente. Dale play al tour en video.</p></div>
+    <div class="galeria-wrap" id="galeria-wrap">
+      <div id="galeria"></div>
+      <div id="video-caja"></div>
+    </div>
+  </div>
+</section>
+<dialog class="visor" id="visor" aria-label="Foto ampliada"><button type="button" data-cerrar aria-label="Cerrar foto">✕</button><img alt=""></dialog>
+
+<section class="seccion" id="sec-noticias">
+  <div class="contenedor">
+    <div class="seccion__cab reveal"><span class="etiqueta">Noticias</span><h2>Lo último que hacemos</h2></div>
+    <div id="ultimas-noticias"></div>
+    <p style="margin-top:1.4rem"><a class="btn btn--borde" href="<?php echo esc_url( iv_url( 'noticias' ) ); ?>">Ver todas las noticias <span data-icon="arrow-right"></span></a></p>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:0">
+  <div class="contenedor">
+    <div class="cta-final reveal">
+      <h2>¿Tienes material para reciclar?</h2>
+      <p>Cuéntanos tu barrio y qué material tienes. Te decimos cómo recogerlo.</p>
+      <div class="heroe__acciones">
+        <a class="btn btn--sol btn--grande" href="<?php echo esc_url( iv_url( 'contacto' ) ); ?>?asunto=solicitud#formulario" data-wa-recoleccion><span data-icon="truck"></span> Pedir una recolección</a>
+        <a class="btn btn--borde-claro btn--grande" href="<?php echo esc_url( iv_url( 'rutas-y-horarios' ) ); ?>">Consultar mi ruta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<?php get_footer(); ?>
