@@ -207,18 +207,41 @@ add_action( 'customize_register', function ( $wp ) {
 } );
 
 /* ---------- Escritorio de WordPress más sencillo ---------- */
+// Editor clásico: título, texto, foto y Publicar (más fácil que el editor de bloques)
+add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
+add_action( 'add_meta_boxes_post', function () {
+	foreach ( array( 'tagsdiv-post_tag', 'categorydiv', 'postexcerpt', 'postcustom', 'commentstatusdiv', 'commentsdiv', 'trackbacksdiv', 'slugdiv', 'authordiv', 'formatdiv', 'revisionsdiv' ) as $c ) {
+		remove_meta_box( $c, 'post', 'normal' ); remove_meta_box( $c, 'post', 'side' ); remove_meta_box( $c, 'post', 'advanced' );
+	}
+}, 99 );
+add_filter( 'disable_categories_dropdown', '__return_true' );
+add_filter( 'manage_post_posts_columns', function ( $c ) { unset( $c['categories'], $c['tags'], $c['comments'], $c['author'] ); return $c; } );
+add_filter( 'enter_title_here', function ( $t, $post ) { return 'post' === $post->post_type ? 'Escribe aquí el título de la noticia' : $t; }, 10, 2 );
+
 // "Entradas" se llama "Noticias"
 add_action( 'init', function () {
 	global $wp_post_types;
 	$l = &$wp_post_types['post']->labels;
 	$l->name = 'Noticias'; $l->singular_name = 'Noticia'; $l->add_new = 'Añadir noticia'; $l->add_new_item = 'Nueva noticia';
 	$l->edit_item = 'Editar noticia'; $l->all_items = 'Todas las noticias'; $l->menu_name = 'Noticias'; $l->name_admin_bar = 'Noticia';
+	$l->search_items = 'Buscar noticias'; $l->view_items = 'Ver noticias'; $l->not_found = 'Todavía no hay noticias.'; $l->view_item = 'Ver noticia'; $l->item_published = 'Noticia publicada.'; $l->item_updated = 'Noticia actualizada.';
 	$l->featured_image = 'Foto de la noticia'; $l->set_featured_image = 'Elegir foto de la noticia'; $l->remove_featured_image = 'Quitar foto'; $l->use_featured_image = 'Usar como foto de la noticia';
 } );
 add_action( 'admin_menu', function () {
 	remove_menu_page( 'edit-comments.php' );
+	remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );
+	remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' );
 	global $menu;
 	foreach ( $menu as &$m ) { if ( 'edit.php' === $m[2] ) { $m[6] = 'dashicons-megaphone'; } }
+} );
+add_filter( 'post_updated_messages', function ( $m ) {
+	global $post;
+	$ver = $post ? ' <a href="' . esc_url( get_permalink( $post ) ) . '" target="_blank">Ver la noticia en la página</a>' : '';
+	$m['post'][1] = 'Noticia actualizada.' . $ver;
+	$m['post'][6] = 'Noticia publicada.' . $ver;
+	$m['post'][7] = 'Noticia guardada.';
+	$m['post'][10] = 'Borrador guardado.';
+	return $m;
 } );
 // Sin comentarios en el sitio
 add_action( 'init', function () { remove_post_type_support( 'post', 'comments' ); remove_post_type_support( 'post', 'trackbacks' ); }, 100 );
@@ -243,6 +266,8 @@ add_action( 'wp_dashboard_setup', function () {
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
 	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
 	remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
 } );
 
 /* ---------- Al activar el tema: crea las páginas y deja todo configurado ---------- */
